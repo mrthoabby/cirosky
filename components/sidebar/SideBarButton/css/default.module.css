@@ -4,6 +4,8 @@
 }
 
 .button {
+  font: inherit;
+  display: inline-block;
   border-width: 0.01px;
   border-color: transparent;
   font-style: normal;
@@ -13,4 +15,6 @@
   padding: 4px 0;
   width: 100%;
   text-align: left;
+  background-color: transparent;
+  color: var(--primary-font-color);
 }

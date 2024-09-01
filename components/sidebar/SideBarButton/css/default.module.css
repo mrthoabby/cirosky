@@ -1,0 +1,16 @@
+.button:hover {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.button {
+  border-width: 0.01px;
+  border-color: transparent;
+  font-style: normal;
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  padding: 4px 0;
+  width: 100%;
+  text-align: left;
+}

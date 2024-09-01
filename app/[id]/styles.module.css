@@ -1,0 +1,29 @@
+.container {
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  grid-template-columns: 350px 1fr;
+  height: 100vh;
+}
+
+.header {
+  grid-column: 2 / -1;
+  background-color: #d9d9d9;
+  color: rgb(47, 47, 47);
+  padding: 5px;
+}
+
+.sidebar {
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+}
+
+.main {
+  grid-column: 2 / -1;
+  grid-row: 2 / -1;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgb(240, 237, 237);
+  color: rgb(73, 73, 73);
+}

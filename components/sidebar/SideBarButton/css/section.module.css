@@ -1,0 +1,9 @@
+.viewer {
+  font-weight: 400;
+  text-indent: calc(40px + 20px);
+}
+
+.create {
+  font-weight: 100;
+  text-indent: 40px;
+}

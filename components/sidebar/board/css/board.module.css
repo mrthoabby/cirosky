@@ -1,0 +1,27 @@
+.container {
+  background-color: var(--primary-background-color);
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  padding-top: 30px;
+  padding-left: var(--first-level-menu-indentation);
+  padding-bottom: 70px;
+  font-size: var(--principal-title-font-size);
+  font-weight: var(--principal-title-font-weight);
+  user-select: none;
+  pointer-events: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.title {
+  letter-spacing: 1.2px;
+}

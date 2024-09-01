@@ -1,0 +1,11 @@
+.create {
+  font-weight: 100;
+  font-style: italic;
+  text-indent: var(--third-level-menu-indentation);
+}
+
+.view {
+  font-weight: 200;
+  text-indent: var(--third-level-menu-indentation);
+  white-space: pre-wrap;
+}

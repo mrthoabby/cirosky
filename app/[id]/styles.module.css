@@ -7,6 +7,9 @@
 
 .header {
   grid-column: 2 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: end;
   background-color: #d9d9d9;
   color: rgb(47, 47, 47);
   padding: 5px;

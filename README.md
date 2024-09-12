@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🗂️ Cirosky: Almacena y Comparte desde un Solo Lugar 🚀
 
-## Getting Started
+✨ **Cirosky** es la solución ideal para **almacenar** y **organizar** tus escritos, ideas, proyectos y documentación, ¡todo en un solo
+lugar! Ya sea que prefieras mantenerlo privado o compartirlo con tu equipo, Cirosky hace que gestionar información personal y colaborativa
+sea más fácil que nunca. 📚
 
-First, run the development server:
+## 🚀 Tecnologías Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🖥️ **Next.js**: El framework de React para aplicaciones web rápidas y escalables.
+- 📘 **TypeScript**: Aumenta la productividad y la seguridad en el código mediante tipado estático.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌟 Descripción
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Con **Cirosky**, puedes:
 
-## Learn More
+- 📝 Organizar tus escritos y proyectos en un solo lugar.
+- 🛡️ Mantener tu información **privada** o compartirla con el mundo 🌍.
+- 👨‍💻 Colaborar con tu equipo en tiempo real.
+- 📂 Centralizar todo lo que necesitas en una interfaz sencilla y atractiva.
 
-To learn more about Next.js, take a look at the following resources:
+## 🎯 Características Principales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 📋 **Gestión de Documentación**: Mantén todos tus archivos bien organizados y accesibles desde cualquier lugar.
+- 🔐 **Privacidad y Control**: Decide si tus proyectos son privados o si deseas compartirlos con otros.
+- 🤝 **Colaboración en Tiempo Real**: Comparte y trabaja con tu equipo de manera fluida.
+- 🔍 **Búsqueda Inteligente**: Encuentra rápidamente lo que necesitas, incluso entre miles de documentos.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🚀 Empezando
 
-## Deploy on Vercel
+### 🛠️ Instalación
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clona este repositorio** en tu máquina local 🖥️:
+   ```bash
+   git clone https://github.com/yourusername/cirosky.git
+   ```
+2. Ve al directorio del proyecto 📂:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   cd cirosky
+   ```
+
+3. Instala las dependencias 📦:
+
+   ```bash
+   npm install
+
+   ```
+
+## 🧑‍💻 Ejecutar el Proyecto
+
+1. Inicia el servidor de desarrollo 🚀:
+   ```bash
+   git clone https://github.com/yourusername/cirosky.git
+   ```
+
+# 🤝 Contribuyendo
+
+¡Nos encanta recibir contribuciones de la comunidad! 🌟 Si tienes alguna idea o mejora, aquí está cómo puedes contribuir:
+
+1. **Haz un fork del proyecto** 🍴.
+
+2. **Crea una nueva rama** para tu función:
+
+   ```bash
+   git checkout -b feature/nueva-funcion
+   ```
+
+3. **Haz tus cambios** y **haz un commit** con un buen mensaje descriptivo 💪:
+
+   ```bash
+   git commit -m "💡 Añadir nueva funcionalidad de búsqueda"
+   ```
+
+4. **Haz push** de tu rama y **crea un pull request** 🚀:
+   ```bash
+   git push origin feature/nueva-funcion
+   ```
+
+## 💡 Ideas y Sugerencias
+
+¿Tienes alguna idea genial? ¡Queremos escucharla! 💡 Puedes dejar tus sugerencias en nuestra sección de Discusiones o abrir un issue.

@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["tailwindcss"],
+  "cSpell.words": ["Rediseño", "webp"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -8,7 +8,15 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always"
+    "source.fixAll": "always",
+    "source.organizeImports": "always",
+    "source.fixAll.eslint": "always",
+    "source.fixAll.stylelint": "always",
+    "source.fixAll.markdownlint": "always",
+    "source.addMissingImports.ts": "always",
+    "source.fixAll.ts": "always",
+    "source.removeUnusedImports": "always",
+    "source.sortImports": "always"
   },
   "editor.formatOnSave": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -18,10 +26,14 @@
     "source.organizeImports": "explicit",
     "source.removeUnused.ts": "explicit",
     "source.removeUnusedImports": "explicit",
-    "source.sortImports": "explicit"
+    "source.sortImports": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
   "editor.codeActions.triggerOnFocusChange": true,
   "editor.formatOnSaveMode": "file",
   "typescript.format.enable": true,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.autoClosingTags": true,
+  "typescript.format.insertSpaceAfterConstructor": true,
+  "typescript.suggest.autoImports": true
 }

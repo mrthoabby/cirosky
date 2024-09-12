@@ -1,17 +1,15 @@
 :root {
   --primary-font-color: #ffffff;
   --first-level-menu-indentation: 40px;
-  --second-level-menu-indentation: calc(
-    var(--first-level-menu-indentation) + 20px
-  );
-  --third-level-menu-indentation: calc(
-    var(--second-level-menu-indentation) + 10px
-  );
+  --second-level-menu-indentation: calc(var(--first-level-menu-indentation) + 20px);
+  --third-level-menu-indentation: calc(var(--second-level-menu-indentation) * 3.5);
 
   --primary-background-color: #242424;
 
   --principal-title-font-size: 35px;
   --principal-title-font-weight: 300;
+
+  --header-height: 40px;
 }
 
 body {

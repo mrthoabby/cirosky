@@ -1,6 +1,9 @@
 .container {
   background-color: var(--primary-background-color);
   height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .header {
@@ -9,17 +12,11 @@
   column-gap: 20px;
   padding-top: 30px;
   padding-left: var(--first-level-menu-indentation);
-  padding-bottom: 70px;
+  padding-bottom: 30px;
   font-size: var(--principal-title-font-size);
   font-weight: var(--principal-title-font-weight);
   user-select: none;
   pointer-events: none;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
 }
 
 .title {

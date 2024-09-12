@@ -1,16 +1,17 @@
-import Board from "@/components/sidebar/board/Board";
+import SidebarBoard from "@/components/sidebar/SidebarBoard/SidebarBoard";
+import React from "react";
 import styles from "./styles.module.css";
 
-export default function RootLayout({
+export default function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): JSX.Element {
   return (
     <main className={styles.container}>
       <header className={styles.header}>[Developing...]</header>
       <aside className={styles.sidebar}>
-        <Board />
+        <SidebarBoard />
       </aside>
       <section className={styles.main}>{children}</section>
     </main>

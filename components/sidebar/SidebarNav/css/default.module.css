@@ -1,9 +1,9 @@
-.button:hover {
+.nav:hover {
   border-top-color: #fff;
   border-bottom-color: #fff;
 }
 
-.button {
+.nav {
   position: relative;
   font: inherit;
   border-width: 0.01px;
@@ -17,23 +17,23 @@
   width: 100%;
   text-align: left;
   background-color: #ffffff00;
-  color: var(--primary-font-color);
+  list-style: none;
+  vertical-align: middle;
 }
 
-.button:active {
+.nav:active {
   text-shadow: 0px 3px 7px rgba(255, 255, 255, 0.705);
 }
 
-.text {
-  padding-left: var(--first-level-menu-indentation);
+.title {
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 100;
+  text-decoration: none;
+  color: var(--primary-font-color);
   position: relative;
-}
-
-.subButton {
-  left: 10px;
-  font-style: italic;
+  left: calc(var(--first-level-menu-indentation) + 20px);
+  width: 70%;
 }

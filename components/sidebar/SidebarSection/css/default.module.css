@@ -1,9 +1,9 @@
-.button:hover {
+.container:hover {
   border-top-color: #fff;
   border-bottom-color: #fff;
 }
 
-.button {
+.container {
   position: relative;
   font: inherit;
   border-width: 0.01px;
@@ -20,20 +20,21 @@
   color: var(--primary-font-color);
 }
 
-.button:active {
+.container:active {
   text-shadow: 0px 3px 7px rgba(255, 255, 255, 0.705);
 }
 
-.text {
+.title {
   padding-left: var(--first-level-menu-indentation);
+  list-style: none;
+  width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: 100;
-  position: relative;
+  font-weight: 400;
 }
 
-.subButton {
-  left: 10px;
-  font-style: italic;
+.title::before {
+  content: "# ";
+  padding: 3px;
 }

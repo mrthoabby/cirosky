@@ -3,8 +3,8 @@ import logo from "@/public/cirosky.svg";
 import styles from "./css/board.module.css";
 
 import Loader from "@/components/shared/Loader/Loader";
-import SidebarButton from "@/components/sidebar/SideBarButton/SidebarButton";
-import SidebarSectionList from "@/components/sidebar/SidebarSectionList/SidebarSectionList";
+import SidebarAddSection from "@/components/sidebar/SidebarAddSection/SidebarAddSection";
+import SidebarSectionContainer from "@/components/sidebar/SidebarSectionContainer/SidebarSectionContainer";
 import Image from "next/image";
 import { Suspense } from "react";
 
@@ -17,9 +17,9 @@ export default async function SidebarBoard(): Promise<JSX.Element> {
       </header>
       <section style={{ marginBottom: 30, paddingLeft: 30 }}>[DELVELOPING... AQUI SEARCHER]</section>
       <nav>
-        <SidebarButton text="Crear sección" />
+        <SidebarAddSection />
         <Suspense fallback={<Loader />}>
-          <SidebarSectionList />
+          <SidebarSectionContainer />
         </Suspense>
       </nav>
     </aside>

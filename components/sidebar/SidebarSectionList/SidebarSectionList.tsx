@@ -1,11 +1,10 @@
+"use client";
 import SidebarSection from "@/components/sidebar/SidebarSection/SidebarSection";
 import { ISection } from "@/domain/interfaces/ISection";
-import { GetSections } from "@/external/providers/sectionProvider";
 import styles from "./css/default.module.css";
+import { ISidebarSectionListProps } from "./domain/Props";
 
-export default async function SidebarSectionList(): Promise<JSX.Element> {
-  const sections = await GetSections();
-
+export default function SidebarSectionList({ sections }: ISidebarSectionListProps): JSX.Element {
   return (
     <ul>
       {sections.map(({ title, pages, id }: ISection) => (

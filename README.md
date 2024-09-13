@@ -86,8 +86,10 @@ Con **Cirosky**, puedes:
 
 ## 1. Crear Secciones con Nombre Editable
 
-- [ ] Implementar botón para agregar nuevas secciones
-- [ ] Incluir campo para escribir el nombre de la sección
+- [x] Implementar botón para agregar nuevas secciones (50%) .
+  - [ ] implementar lógica de añadir sección
+  - [x] implementar UI Preview
+- [x] Incluir campo para escribir el nombre de la sección
 - [ ] Permitir edición del nombre de la sección después de su creación
 
 ## 2. Eliminar Secciones y sus Páginas Asociadas

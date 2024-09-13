@@ -16,7 +16,6 @@
     "max-len": ["error", { "code": 140, "ignoreUrls": true }],
     "@typescript-eslint/no-explicit-any": "error",
     "eqeqeq": ["error", "always"],
-    "react/jsx-no-bind": ["warn", { "ignoreRefs": true }],
     "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     "no-use-before-define": ["error", { "functions": false, "classes": false }],
     "prefer-const": "error",

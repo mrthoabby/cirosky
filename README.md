@@ -81,3 +81,43 @@ Con **Cirosky**, puedes:
 ## 💡 Ideas y Sugerencias
 
 ¿Tienes alguna idea genial? ¡Queremos escucharla! 💡 Puedes dejar tus sugerencias en nuestra sección de Discusiones o abrir un issue.
+
+# Tareas Específicas del Proyecto
+
+## 1. Crear Secciones con Nombre Editable
+
+- [ ] Implementar botón para agregar nuevas secciones
+- [ ] Incluir campo para escribir el nombre de la sección
+- [ ] Permitir edición del nombre de la sección después de su creación
+
+## 2. Eliminar Secciones y sus Páginas Asociadas
+
+- [ ] Implementar botón para eliminar una sección específica
+- [ ] Asegurar que al eliminar una sección se eliminen todas sus páginas asociadas
+
+## 3. Crear Páginas Dentro de Cada Sección
+
+- [ ] Implementar funcionalidad para agregar páginas dentro de una sección específica
+- [ ] Añadir botón dentro de cada sección para agregar nuevas páginas
+
+## 4. Eliminar Páginas Individuales
+
+- [ ] Implementar funcionalidad para eliminar páginas individuales dentro de una sección
+- [ ] Añadir botón de eliminación a cada página
+- [ ] Asegurar que la eliminación de una página no afecte a otras páginas o secciones
+
+## 5. Editar Contenido de Página
+
+- [ ] Implementar redirección al editor al crear o seleccionar una página
+- [ ] Desarrollar editor para modificar el contenido de la página
+- [ ] Implementar funcionalidad para guardar cambios realizados en la página
+
+---
+
+### Progreso General:
+
+- [ ] Tarea 1 completada
+- [ ] Tarea 2 completada
+- [ ] Tarea 3 completada
+- [ ] Tarea 4 completada
+- [ ] Tarea 5 completada

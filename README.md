@@ -84,37 +84,86 @@ Con **Cirosky**, puedes:
 
 # Tareas Específicas del Proyecto
 
-## 1. Crear Secciones con Nombre Editable
+# Lista de Tareas del Proyecto
 
-- [x] Implementar botón para agregar nuevas secciones (50%) .
-  - [ ] implementar lógica de añadir sección
-  - [x] implementar UI Preview
-- [x] Incluir campo para escribir el nombre de la sección
-- [ ] Permitir edición del nombre de la sección después de su creación
+## 1. Cargar Datos Paginados al Hacer Scroll (Parcial Load)
 
-## 2. Eliminar Secciones y sus Páginas Asociadas
+- [x] Implementar un indicador de "cargando" cuando se esté solicitando más datos.
+- [ ] Implementar servicio de backend para obtener datos paginados.
+- [ ] Añadir lógica en frontend para solicitar más datos al hacer scroll.
+- [ ] Ajustar el diseño de la UI para manejar la carga incremental de datos.
 
-- [ ] Implementar botón para eliminar una sección específica
-- [ ] Asegurar que al eliminar una sección se eliminen todas sus páginas asociadas
+**Tiempo estimado**:
 
-## 3. Crear Páginas Dentro de Cada Sección
+- Backend: 4-6 horas.
+- Frontend: 4-6 horas.
 
-- [ ] Implementar funcionalidad para agregar páginas dentro de una sección específica
-- [ ] Añadir botón dentro de cada sección para agregar nuevas páginas
+## 2. Crear Secciones con Nombre Editable (Continuar con la tarea existente)
 
-## 4. Eliminar Páginas Individuales
+- [ ] Implementar lógica de añadir sección.
+- [ ] Permitir edición del nombre de la sección después de su creación.
 
-- [ ] Implementar funcionalidad para eliminar páginas individuales dentro de una sección
-- [ ] Añadir botón de eliminación a cada página
-- [ ] Asegurar que la eliminación de una página no afecte a otras páginas o secciones
+**Tiempo estimado**: 6-8 horas.
 
-## 5. Editar Contenido de Página
+## 3. Eliminar Secciones y sus Páginas Asociadas
 
-- [ ] Implementar redirección al editor al crear o seleccionar una página
-- [ ] Desarrollar editor para modificar el contenido de la página
-- [ ] Implementar funcionalidad para guardar cambios realizados en la página
+- [ ] Implementar botón para eliminar una sección específica.
+- [ ] Asegurar que al eliminar una sección, se eliminen todas sus páginas asociadas.
 
----
+**Tiempo estimado**: 4-6 horas.
+
+## 4. Crear Páginas Dentro de Cada Sección
+
+- [ ] Implementar funcionalidad para agregar páginas dentro de una sección específica.
+- [ ] Implementar lógica en botón dentro de cada sección para agregar nuevas páginas.
+
+**Tiempo estimado**: 3-4 horas.
+
+## 5. Eliminar Páginas Individuales
+
+- [ ] Implementar funcionalidad para eliminar páginas individuales dentro de una sección.
+- [ ] Añadir botón de eliminación a cada página.
+- [ ] Asegurar que la eliminación de una página no afecte a otras páginas o secciones.
+
+**Tiempo estimado**: 3-4 horas.
+
+## 6. Crear Editor de Texto para el Contenido de la Página
+
+- [ ] 7.1 Elegir un editor de texto enriquecido (como Quill, Slate, o Draft.js).
+- [ ] 7.2 Integrar el editor de texto enriquecido en la UI.
+- [ ] 7.3 Añadir opciones de formato básico (negrita, cursiva, listas, etc.).
+- [ ] 7.4 Implementar funcionalidad para guardar el contenido del editor.
+
+**Tiempo estimado**: 8-10 horas.
+
+## 7. Editar Contenido de Página
+
+- [ ] 6.1 Implementar redirection al editor al crear o seleccionar una página.
+- [ ] 6.2 Desarrollar editor para modificar el contenido de la página.
+- [ ] 6.3 Implementar funcionalidad para guardar cambios realizados en la página.
+
+**Tiempo estimado**: 6-8 horas.
+
+## 8. Exportar Página a Formato PDF
+
+- [ ] 8.1 Implementar una librería para generar PDFs desde el contenido de la página (por ejemplo, jsPDF).
+- [ ] 8.2 Añadir botón o funcionalidad para exportar la página a PDF.
+- [ ] 8.3 Personalizar el formato del PDF (tamaño de página, estilo, etc.).
+
+**Tiempo estimado**: 4-6 horas.
+
+## 9. Cambiar el Idioma de la Aplicación (i18n)
+
+- [ ] 9.1 Implementar un sistema de internacionalización (i18n) en la aplicación.
+- [ ] 9.2 Añadir soporte para español e inglés.
+- [ ] 9.3 Crear un botón o selector para cambiar de idioma en tiempo real.
+
+**Tiempo estimado**: 6-8 horas.
+
+### Extensiones
+
+- Paginas embebidas
+- Plantillas de pagina (doc,cv,horario, etc)
 
 ### Progreso General:
 
@@ -123,3 +172,7 @@ Con **Cirosky**, puedes:
 - [ ] Tarea 3 completada
 - [ ] Tarea 4 completada
 - [ ] Tarea 5 completada
+- [ ] Tarea 6 completada
+- [ ] Tarea 7 completada
+- [ ] Tarea 8 completada
+- [ ] Tarea 9 completada

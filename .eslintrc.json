@@ -11,6 +11,7 @@
   "rules": {
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "off",
     "no-var": "error",
     "quotes": ["error", "double", { "avoidEscape": true }],
     "max-len": ["error", { "code": 140, "ignoreUrls": true }],
@@ -31,7 +32,7 @@
       "error",
       {
         "ignoreEnums": true,
-        "ignore": [0, 1]
+        "ignore": [-1, 0, 1]
       }
     ],
     "no-trailing-spaces": "error",

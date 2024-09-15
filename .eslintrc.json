@@ -16,8 +16,8 @@
     "max-len": ["error", { "code": 140, "ignoreUrls": true }],
     "@typescript-eslint/no-explicit-any": "error",
     "eqeqeq": ["error", "always"],
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": false, "classes": false }],
     "prefer-const": "error",
     "no-nested-ternary": "error",
     "func-names": ["error", "never"],
@@ -27,7 +27,13 @@
     "object-curly-spacing": ["error", "always"],
     "no-param-reassign": "error",
     "camelcase": "error",
-    "no-magic-numbers": "error",
+    "@typescript-eslint/no-magic-numbers": [
+      "error",
+      {
+        "ignoreEnums": true,
+        "ignore": [0, 1]
+      }
+    ],
     "no-trailing-spaces": "error",
     "padding-line-between-statements": ["error", { "blankLine": "always", "prev": "*", "next": "return" }],
     "no-lonely-if": "error",

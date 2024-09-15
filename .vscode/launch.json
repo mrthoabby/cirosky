@@ -34,8 +34,9 @@
       "type": "chrome",
       "request": "launch",
       "name": "Open Next.js App in Chrome",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "url": "http://localhost:3001/home",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": ["--incognito"]
     }
   ]
 }

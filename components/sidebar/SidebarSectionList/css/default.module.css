@@ -1,3 +1,31 @@
 .list {
   list-style: none;
 }
+
+.container {
+  flex: content;
+  overflow: hidden;
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
+
+.container::-webkit-scrollbar {
+  width: 14px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #242424;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}

@@ -89,9 +89,9 @@ Con **Cirosky**, puedes:
 ## 1. Cargar Datos Paginados al Hacer Scroll (Parcial Load)
 
 - [x] Implementar un indicador de "cargando" cuando se esté solicitando más datos.
-- [ ] Implementar servicio de backend para obtener datos paginados.
-- [ ] Añadir lógica en frontend para solicitar más datos al hacer scroll.
-- [ ] Ajustar el diseño de la UI para manejar la carga incremental de datos.
+- [x] Implementar servicio de backend mocks para obtener datos paginados.
+- [x] Añadir lógica en frontend para solicitar más datos al hacer scroll.
+- [x] Ajustar el diseño de la UI para manejar la carga incremental de datos.
 
 **Tiempo estimado**:
 
@@ -164,10 +164,11 @@ Con **Cirosky**, puedes:
 
 - Paginas embebidas
 - Plantillas de pagina (doc,cv,horario, etc)
+- Reparar Eslint para que solo trabaje con typescript y no con javascript
 
 ### Progreso General:
 
-- [ ] Tarea 1 completada
+- [x] Tarea 1 completada
 - [ ] Tarea 2 completada
 - [ ] Tarea 3 completada
 - [ ] Tarea 4 completada

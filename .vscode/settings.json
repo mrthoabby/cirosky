@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Rediseño", "webp"],
+  "cSpell.words": ["Rediseño", "reduxjs", "webp"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

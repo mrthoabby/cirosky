@@ -15,7 +15,12 @@
     "no-var": "error",
     "quotes": ["error", "double", { "avoidEscape": true }],
     "max-len": ["error", { "code": 140, "ignoreUrls": true }],
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "ignoreRestArgs": true
+      }
+    ],
     "eqeqeq": ["error", "always"],
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "@typescript-eslint/no-use-before-define": ["error", { "functions": false, "classes": false }],
@@ -32,7 +37,9 @@
       "error",
       {
         "ignoreEnums": true,
-        "ignore": [-1, 0, 1]
+        "ignore": [-1, 0, 1],
+        "enforceConst": true,
+        "ignorePattern": "^[A-Z_][A-Z0-9_]*$"
       }
     ],
     "no-trailing-spaces": "error",

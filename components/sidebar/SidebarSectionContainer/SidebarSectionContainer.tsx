@@ -1,10 +1,15 @@
+import ClientWrapper from "@/components/shared/ClientWrapper/ClientWrapper";
 import { fetchPaginatedSections } from "@/external/API";
 import SidebarSectionList from "../SidebarSectionList/SidebarSectionList";
 
-const NUMBER_OF_SECTIONS_PER_GROUP = 10;
+const NUMBER_OF_SECTIONS_PER_GROUP = 2;
 
 export default async function SidebarSectionContainer(): Promise<JSX.Element> {
-  const { Elements, CurrentPage, GroupBy, TotalPages } = await fetchPaginatedSections(NUMBER_OF_SECTIONS_PER_GROUP);
+  const { Elements, GroupBy, TotalPages } = await fetchPaginatedSections(NUMBER_OF_SECTIONS_PER_GROUP);
 
-  return <SidebarSectionList sections={Elements} currentPage={CurrentPage} groupingSize={GroupBy} numberOfPages={TotalPages} />;
+  return (
+    <ClientWrapper>
+      <SidebarSectionList firstSections={Elements} groupBy={GroupBy} totalPages={TotalPages} />
+    </ClientWrapper>
+  );
 }

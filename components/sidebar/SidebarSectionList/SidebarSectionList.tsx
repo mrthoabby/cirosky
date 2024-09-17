@@ -3,68 +3,94 @@ import Loader from "@/components/shared/Loader/Loader";
 import SidebarSection from "@/components/sidebar/SidebarSection/SidebarSection";
 import { ISection } from "@/domain/interfaces/ISection";
 import { fetchPaginatedSections } from "@/external/API";
-import { useEffect, useRef, useState } from "react";
+import {
+  useAddIncrementalSectionsReducer,
+  useEnableIncrementalFetchingReducer,
+  useGetFullSectionsSelector,
+  useInitializeSectionsReducer,
+  useSetFetchingDataReducer,
+} from "@/store/sections/sectionsSlice";
+import { useEffect, useRef } from "react";
 import styles from "./css/default.module.css";
-import { ISidebarSectionListProps, ISidebarSectionListState } from "./domain/Props";
+import { ISidebarSectionListProps } from "./domain/Props";
 
-export default function SidebarSectionList({
-  currentPage: CurrentPage,
-  sections: Elements,
-  groupingSize: GroupBy,
-  numberOfPages: TotalPages,
-}: Readonly<ISidebarSectionListProps>): JSX.Element {
-  const [state, setState] = useState<ISidebarSectionListState>({
-    pageToLoad: CurrentPage,
-    sections: Elements,
-    showLoader: false,
-  });
+export default function SidebarSectionList({ firstSections, groupBy, totalPages }: Readonly<ISidebarSectionListProps>): JSX.Element {
+  const isScrollAtTop = useRef<boolean>(false);
+  const listContainer = useRef<HTMLUListElement | null>(null);
 
-  const isScrollShowed = useRef<boolean>(false);
-  const ulContainer = useRef<HTMLUListElement | null>(null);
+  const dataToShow: ISection[] = [];
 
-  function scrollWasMoved(): void {
-    if (ulContainer.current) {
-      const FINAL_POSITION = (ulContainer.current?.scrollHeight ?? 0) - (ulContainer.current?.clientHeight ?? 0);
-      const POSITION_DISTANCE =
-        FINAL_POSITION - ulContainer.current.scrollTop < 0
-          ? (FINAL_POSITION - ulContainer.current.scrollTop) * -1
-          : FINAL_POSITION - ulContainer.current.scrollTop;
+  const { sections, pageToLoad, isFetchingData } = useGetFullSectionsSelector();
 
-      if (POSITION_DISTANCE <= 1) {
-        isScrollShowed.current = false;
-        ulContainer.current?.removeEventListener("scroll", scrollWasMoved);
+  const initializeSections = useInitializeSectionsReducer();
+  const enableIncrementalFetching = useEnableIncrementalFetchingReducer();
+  const addIncrementalSections = useAddIncrementalSectionsReducer();
+  const setFetchingData = useSetFetchingDataReducer();
 
-        if (state.pageToLoad < TotalPages) {
-          setState((prev) => ({ ...prev, showLoader: true, pageToLoad: prev.pageToLoad + 1 }));
-        }
-      }
+  function tryInitializeData(): void {
+    if (sections.length === 0 && firstSections.length > 0) {
+      dataToShow.push(...firstSections);
+      initializeSections(firstSections);
+    } else {
+      dataToShow.push(...sections);
     }
   }
 
+  function isScrollAtTheEnd(): boolean {
+    const { current } = listContainer;
+    const { scrollHeight = 0, clientHeight = 0, scrollTop = 0 } = current || {};
+
+    const FINAL_POSITION = scrollHeight - clientHeight;
+    const POSITION_DISTANCE = Math.abs(FINAL_POSITION - scrollTop);
+
+    return POSITION_DISTANCE <= 1 && scrollHeight > 0;
+  }
+
+  function inactiveScrollEvents(): void {
+    isScrollAtTop.current = false;
+    listContainer.current?.removeEventListener("scroll", scrollWasMoved);
+  }
+
+  function tryEnableModFetchingData(): void {
+    if (pageToLoad < totalPages) {
+      enableIncrementalFetching();
+    }
+  }
+
+  function isScrollVisible(): boolean {
+    return !!listContainer.current && listContainer.current.scrollHeight > listContainer.current.clientHeight;
+  }
+
+  function scrollWasMoved(): void {
+    if (isScrollAtTheEnd()) {
+      inactiveScrollEvents();
+
+      tryEnableModFetchingData();
+    }
+  }
+
+  tryInitializeData();
+
   useEffect(() => {
-    if (state.showLoader) {
-      fetchPaginatedSections(GroupBy, state.pageToLoad)
+    if (isFetchingData) {
+      fetchPaginatedSections(groupBy, pageToLoad)
         .then((response) => {
-          setState((prev) => ({ ...prev, sections: [...prev.sections, ...response.Elements], showLoader: false }));
+          addIncrementalSections(response.Elements);
         })
         .catch((error: unknown) => {
           console.warn(error);
-          setState((prev) => ({ ...prev, showLoader: false }));
+          setFetchingData(false);
         });
-    } else if (ulContainer.current) {
-      if (!state.showLoader) {
-        if (ulContainer.current.scrollHeight > ulContainer.current.clientHeight) {
-          isScrollShowed.current = true;
-        } else if (state.pageToLoad < TotalPages) {
-          setState((prev) => ({ ...prev, showLoader: true, pageToLoad: prev.pageToLoad + 1 }));
-        }
-      }
+    } else if (isScrollVisible()) {
+      isScrollAtTop.current = true;
+    } else {
+      tryEnableModFetchingData();
     }
 
     const cleanUpHandlers: (() => void)[] = [];
 
-    if (isScrollShowed.current && ulContainer.current) {
-      const ulElement = ulContainer.current;
+    if (isScrollAtTop.current && listContainer.current) {
+      const ulElement = listContainer.current;
       ulElement.addEventListener("scroll", scrollWasMoved);
 
       cleanUpHandlers.push(() => ulElement.removeEventListener("scroll", scrollWasMoved));
@@ -73,16 +99,16 @@ export default function SidebarSectionList({
     return (): void => {
       cleanUpHandlers.forEach((clean) => clean());
     };
-  }, [state.showLoader, state.pageToLoad]);
+  }, [isFetchingData, pageToLoad]);
 
   return (
-    <ul className={styles.container} ref={ulContainer}>
-      {state.sections.map(({ title, pages, id }: ISection) => (
+    <ul className={styles.container} ref={listContainer}>
+      {dataToShow.map(({ title, pages, id }: ISection) => (
         <li key={`${id}section-${crypto.randomUUID}`} className={styles.list}>
           <SidebarSection title={title} pages={pages} id={id} />
         </li>
       ))}
-      {state.showLoader && <Loader />}
+      {isFetchingData && <Loader />}
     </ul>
   );
 }

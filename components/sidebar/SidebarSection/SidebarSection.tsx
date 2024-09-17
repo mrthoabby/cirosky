@@ -12,7 +12,7 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
         <li>
           <SidebarButton text="Nueva pagina" isSubButton />
         </li>
-        {pages.map(({ title, id }: IPage) => (
+        {pages?.map(({ title, id }: IPage) => (
           <SidebarNav text={title} href={`/section/${sectionId}/page/${id}`} key={`${id}page-${crypto.randomUUID}`} />
         ))}
       </ul>

@@ -100,8 +100,8 @@ Con **Cirosky**, puedes:
 
 ## 2. Crear Secciones con Nombre Editable (Continuar con la tarea existente)
 
-- [ ] Implementar lógica de añadir sección.
-- [ ] Permitir edición del nombre de la sección después de su creación.
+- [x] Implementar lógica de añadir sección.
+- [x] Permitir edición del nombre de la sección después de su creación.
 
 **Tiempo estimado**: 6-8 horas.
 
@@ -169,7 +169,7 @@ Con **Cirosky**, puedes:
 ### Progreso General:
 
 - [x] Tarea 1 completada
-- [ ] Tarea 2 completada
+- [x] Tarea 2 completada
 - [ ] Tarea 3 completada
 - [ ] Tarea 4 completada
 - [ ] Tarea 5 completada

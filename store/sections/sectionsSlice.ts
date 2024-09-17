@@ -56,6 +56,13 @@ const sectionsSlice = createSlice({
     setShowCreateSectionButtonSwitchInput: (state, action: PayloadAction<boolean>) => {
       state.showCreateSectionButtonSwitchInput = action.payload;
     },
+    updateSectionTitle: (state, action: PayloadAction<{ title: string; id: string }>) => {
+      const { title, id } = action.payload;
+      const sectionIndex = state.sections.findIndex((section) => section.id === id);
+      if (sectionIndex !== -1) {
+        state.sections[sectionIndex].title = title;
+      }
+    },
   },
 });
 
@@ -152,6 +159,14 @@ export function useSetShowCreateSectionButtonSwitchInputReducer(): (showCreateSe
 
   return (showCreateSectionButtonSwitchInput: boolean): void => {
     dispatch(sectionsSlice.actions.setShowCreateSectionButtonSwitchInput(showCreateSectionButtonSwitchInput));
+  };
+}
+
+export function useUpdateSectionTitleReducer(): (title: string, id: string) => void {
+  const dispatch = useDispatch();
+
+  return (title: string, id: string): void => {
+    dispatch(sectionsSlice.actions.updateSectionTitle({ title, id }));
   };
 }
 export const sectionsReducer = sectionsSlice.reducer;

@@ -25,6 +25,7 @@
 }
 
 .title {
+  display: flex;
   padding-left: var(--first-level-menu-indentation);
   list-style: none;
   width: 90%;
@@ -37,4 +38,52 @@
 .title::before {
   content: "# ";
   padding: 3px;
+}
+
+.icon {
+  all: unset;
+  font-size: 12px;
+  padding: 4px 10px;
+  margin-left: 5px;
+  border: outset 1px rgb(218 218 218 / 36%);
+  background-color: #ffffff00;
+  color: white;
+  font-weight: 400;
+  display: none;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.title:hover .icon {
+  display: inline-block;
+}
+
+.title:focus .icon {
+  display: inline-block;
+}
+
+.icon:hover {
+  box-shadow: 2px -8px 7px rgb(82 80 80 / 42%);
+  border-radius: 20%;
+  cursor: pointer;
+  -webkit-border-radius: 20%;
+  -moz-border-radius: 20%;
+  -ms-border-radius: 20%;
+  -o-border-radius: 20%;
+}
+
+.input {
+  background-color: #ffffff00;
+  color: var(--primary-font-color);
+  border: none;
+  font-weight: 100;
+  padding: 5px 5px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.titleText {
+  padding: 3px 0;
 }

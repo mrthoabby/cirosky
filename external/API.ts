@@ -14,3 +14,10 @@ export async function createSection(section: ISection): Promise<ISection> {
 
   return section;
 }
+
+export async function updateSectionTitle(title: string, id: string): Promise<boolean> {
+  //TODO: Implement real API call for real case, now is an example with a fake API while the backend is not ready
+  console.info("Updating section:", title, id);
+
+  return true;
+}

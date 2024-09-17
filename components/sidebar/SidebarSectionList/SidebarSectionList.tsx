@@ -9,6 +9,7 @@ import {
   useGetFullSectionsSelector,
   useInitializeSectionsReducer,
   useSetFetchingDataReducer,
+  useSynchronizeDeleteSectionEventReducer,
 } from "@/store/sections/sectionsSlice";
 import { useEffect, useRef } from "react";
 import styles from "./css/default.module.css";
@@ -20,12 +21,18 @@ export default function SidebarSectionList({ firstSections, groupBy, totalPages 
 
   const dataToShow: ISection[] = [];
 
-  const { sections, pageToLoad, isFetchingData } = useGetFullSectionsSelector();
+  const {
+    sections,
+    pageToLoad,
+    isFetchingData,
+    events: { deleteEventIdentifier, previousDeleteEventIdentifier },
+  } = useGetFullSectionsSelector();
 
   const initializeSections = useInitializeSectionsReducer();
   const enableIncrementalFetching = useEnableIncrementalFetchingReducer();
   const addIncrementalSections = useAddIncrementalSectionsReducer();
   const setFetchingData = useSetFetchingDataReducer();
+  const synchronizeDeleteEvent = useSynchronizeDeleteSectionEventReducer();
 
   function tryInitializeData(): void {
     if (sections.length === 0 && firstSections.length > 0) {
@@ -51,6 +58,10 @@ export default function SidebarSectionList({ firstSections, groupBy, totalPages 
     listContainer.current?.removeEventListener("scroll", scrollWasMoved);
   }
 
+  function isDeleteSectionEvent(): boolean {
+    return deleteEventIdentifier !== previousDeleteEventIdentifier;
+  }
+
   function tryEnableModFetchingData(): void {
     if (pageToLoad < totalPages) {
       enableIncrementalFetching();
@@ -72,6 +83,16 @@ export default function SidebarSectionList({ firstSections, groupBy, totalPages 
   tryInitializeData();
 
   useEffect(() => {
+    if (isDeleteSectionEvent()) {
+      synchronizeDeleteEvent();
+      if (!isFetchingData && !isScrollVisible()) {
+        inactiveScrollEvents();
+        tryEnableModFetchingData();
+        return;
+      }
+      return;
+    }
+
     if (isFetchingData) {
       fetchPaginatedSections(groupBy, pageToLoad)
         .then((response) => {
@@ -99,7 +120,7 @@ export default function SidebarSectionList({ firstSections, groupBy, totalPages 
     return (): void => {
       cleanUpHandlers.forEach((clean) => clean());
     };
-  }, [isFetchingData, pageToLoad]);
+  }, [isFetchingData, pageToLoad, deleteEventIdentifier]);
 
   return (
     <ul className={styles.container} ref={listContainer}>

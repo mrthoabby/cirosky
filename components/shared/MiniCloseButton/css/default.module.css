@@ -1,0 +1,25 @@
+.button {
+  all: unset;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: #343434;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  color: #ffffffcc;
+  width: 3px;
+  height: 3px;
+  padding: 10px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #565656;
+}

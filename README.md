@@ -107,8 +107,8 @@ Con **Cirosky**, puedes:
 
 ## 3. Eliminar Secciones y sus Páginas Asociadas
 
-- [ ] Implementar botón para eliminar una sección específica.
-- [ ] Asegurar que al eliminar una sección, se eliminen todas sus páginas asociadas.
+- [x] Implementar botón para eliminar una sección específica.
+- [x] Asegurar que al eliminar una sección, se eliminen todas sus páginas asociadas por mensaje de alarma.
 
 **Tiempo estimado**: 4-6 horas.
 
@@ -165,12 +165,13 @@ Con **Cirosky**, puedes:
 - Paginas embebidas
 - Plantillas de pagina (doc,cv,horario, etc)
 - Reparar Eslint para que solo trabaje con typescript y no con javascript
+- Poner un botón, section o page en loading mode, ya sea para delete o update según si determino si es necesario o no
 
 ### Progreso General:
 
 - [x] Tarea 1 completada
 - [x] Tarea 2 completada
-- [ ] Tarea 3 completada
+- [x] Tarea 3 completada
 - [ ] Tarea 4 completada
 - [ ] Tarea 5 completada
 - [ ] Tarea 6 completada

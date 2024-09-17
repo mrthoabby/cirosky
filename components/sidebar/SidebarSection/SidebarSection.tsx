@@ -1,6 +1,7 @@
+import MiniCloseButton from "@/components/shared/MiniCloseButton/MiniCloseButton";
 import { IPage } from "@/domain/interfaces/IPage";
-import { updateSectionTitle } from "@/external/API";
-import { useUpdateSectionTitleReducer } from "@/store/sections/sectionsSlice";
+import { deleteSection, updateSectionTitle } from "@/external/API";
+import { useGetSectionByIdSelector, useRemoveSectionReducer, useUpdateSectionTitleReducer } from "@/store/sections/sectionsSlice";
 import { useEffect, useRef, useState } from "react";
 import SidebarButton from "../SideBarButton/SidebarButton";
 import SidebarNav from "../SidebarNav/SidebarNav";
@@ -12,6 +13,9 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
   const editInputRef = useRef<HTMLInputElement>(null);
 
   const propagateNewTitle = useUpdateSectionTitleReducer();
+  const propagateRemoveSection = useRemoveSectionReducer();
+
+  const getSectionById = useGetSectionByIdSelector();
 
   function onBlurEditInput() {
     setShowEditInput(false);
@@ -31,6 +35,30 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
       propagateNewTitle(newTitle, sectionId);
       setShowEditInput(false);
     }
+  }
+
+  function removeSection() {
+    const section = getSectionById(sectionId) as ISectionProps;
+
+    if (!section) {
+      alert("La sección no existe");
+      return;
+    }
+
+    if (section.pages && section.pages.length > 0) {
+      //TODO: show modal with warning
+      alert("Alerta por que la sección tiene páginas");
+    }
+
+    deleteSection(sectionId)
+      .then((response) => {
+        //TODO: handle response
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    propagateRemoveSection(sectionId);
   }
 
   function hideInputWithSpecialKeys(event: React.KeyboardEvent<HTMLInputElement>): void {
@@ -70,6 +98,9 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
             </button>
           </>
         )}
+        <span className={styles.hooverHidden}>
+          <MiniCloseButton right="8px" onClick={removeSection} />
+        </span>
       </summary>
 
       <ul>

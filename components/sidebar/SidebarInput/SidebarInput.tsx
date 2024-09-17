@@ -1,5 +1,6 @@
 "use client";
 
+import MiniCloseButton from "@/components/shared/MiniCloseButton/MiniCloseButton";
 import { SectionFactory } from "@/domain/section/SectionFactory";
 import { createSection } from "@/external/API";
 import {
@@ -63,9 +64,7 @@ export default function SidebarInput({ placeholder }: Readonly<ISidebarAddSectio
         ref={inputTextRef}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSectionName(event.target.value)}
       />
-      <button className={styles.close} onClick={() => setAddSectionButtonViability(true)} aria-label="Close">
-        X
-      </button>
+      <MiniCloseButton onClick={() => setAddSectionButtonViability(true)} right="16px" top="4px" />
     </aside>
   );
 }

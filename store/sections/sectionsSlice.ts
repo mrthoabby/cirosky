@@ -1,6 +1,7 @@
 "use client";
 import { ISection } from "@/domain/interfaces/ISection";
 import { SectionFactory } from "@/domain/section/SectionFactory";
+import { IdGenerator } from "@/helpers/IdGenerator";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -10,6 +11,18 @@ interface SectionSlice {
   pageToLoad: number;
   isFetchingData: boolean;
   showCreateSectionButtonSwitchInput: boolean;
+  events: SectionEvents;
+  onActionWas: EnumSectionAction;
+}
+
+interface SectionEvents {
+  deleteEventIdentifier: string;
+  previousDeleteEventIdentifier: string;
+}
+
+export enum EnumSectionAction {
+  NONE = "NONE",
+  DELETED = "SECTION_DELETED",
 }
 
 const initialState: SectionSlice = {
@@ -17,6 +30,11 @@ const initialState: SectionSlice = {
   pageToLoad: 1,
   isFetchingData: false,
   showCreateSectionButtonSwitchInput: true,
+  events: {
+    deleteEventIdentifier: "",
+    previousDeleteEventIdentifier: "",
+  },
+  onActionWas: EnumSectionAction.NONE,
 };
 
 //TODO: CLEAN NOT USED ACTIONS IN THE NEXT RELEASE
@@ -39,10 +57,10 @@ const sectionsSlice = createSlice({
     initializeSections: (state, action: PayloadAction<ISection[]>) => {
       state.sections = action.payload;
     },
-    incrementPage: (state) => {
+    incrementPageOfSections: (state) => {
       state.pageToLoad = state.pageToLoad + 1;
     },
-    enableIncrementalFetching: (state) => {
+    enableIncrementalFetchingSections: (state) => {
       state.isFetchingData = true;
       state.pageToLoad = state.pageToLoad + 1;
     },
@@ -50,7 +68,7 @@ const sectionsSlice = createSlice({
       state.sections.push(...action.payload);
       state.isFetchingData = false;
     },
-    setFetchingData: (state, action: PayloadAction<boolean>) => {
+    setFetchingDataSections: (state, action: PayloadAction<boolean>) => {
       state.isFetchingData = action.payload;
     },
     setShowCreateSectionButtonSwitchInput: (state, action: PayloadAction<boolean>) => {
@@ -62,6 +80,15 @@ const sectionsSlice = createSlice({
       if (sectionIndex !== -1) {
         state.sections[sectionIndex].title = title;
       }
+    },
+    removeSection: (state, action: PayloadAction<string>) => {
+      state.events.deleteEventIdentifier = IdGenerator.generateRandomId(EnumSectionAction.DELETED);
+      state.onActionWas = EnumSectionAction.DELETED;
+      const id = action.payload;
+      state.sections = state.sections.filter((section) => section.id !== id);
+    },
+    synchronizeDeleteSectionEvent: (state) => {
+      state.events.previousDeleteEventIdentifier = state.events.deleteEventIdentifier;
     },
   },
 });
@@ -78,6 +105,15 @@ export function useGetFullSectionsSelector(): SectionSlice {
 
 export function useGetShowCreateSectionButtonSwitchInputSelector(): boolean {
   return useSelector((state: RootState) => state.sectionsReducer.showCreateSectionButtonSwitchInput);
+}
+
+export function useGetSectionByIdSelector(): (id: string) => ISection | null {
+  const sections = useGetSectionsSelector();
+
+  return (id: string): ISection | null => {
+    const section = sections.find((section) => section.id === id);
+    return section || null;
+  };
 }
 
 //DISPATCHERS
@@ -118,7 +154,7 @@ export function useIncrementPageReducer(): () => void {
   const dispatch = useDispatch();
 
   return (): void => {
-    dispatch(sectionsSlice.actions.incrementPage());
+    dispatch(sectionsSlice.actions.incrementPageOfSections());
   };
 }
 
@@ -126,7 +162,7 @@ export function useEnableIncrementalFetchingReducer(): () => void {
   const dispatch = useDispatch();
 
   return (): void => {
-    dispatch(sectionsSlice.actions.enableIncrementalFetching());
+    dispatch(sectionsSlice.actions.enableIncrementalFetchingSections());
   };
 }
 
@@ -142,7 +178,7 @@ export function useSetFetchingDataReducer(): (isFetchingData: boolean) => void {
   const dispatch = useDispatch();
 
   return (isFetchingData: boolean): void => {
-    dispatch(sectionsSlice.actions.setFetchingData(isFetchingData));
+    dispatch(sectionsSlice.actions.setFetchingDataSections(isFetchingData));
   };
 }
 
@@ -169,4 +205,21 @@ export function useUpdateSectionTitleReducer(): (title: string, id: string) => v
     dispatch(sectionsSlice.actions.updateSectionTitle({ title, id }));
   };
 }
+
+export function useRemoveSectionReducer(): (id: string) => void {
+  const dispatch = useDispatch();
+
+  return (id: string): void => {
+    dispatch(sectionsSlice.actions.removeSection(id));
+  };
+}
+
+export function useSynchronizeDeleteSectionEventReducer(): () => void {
+  const dispatch = useDispatch();
+
+  return (): void => {
+    dispatch(sectionsSlice.actions.synchronizeDeleteSectionEvent());
+  };
+}
+
 export const sectionsReducer = sectionsSlice.reducer;

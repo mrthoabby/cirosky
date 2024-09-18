@@ -1,40 +1,41 @@
 import MiniCloseButton from "@/components/shared/MiniCloseButton/MiniCloseButton";
+import { MiniInput } from "@/components/shared/MiniInput/MiniInput";
 import { IPage } from "@/domain/interfaces/IPage";
+import { duplicateNamePagesCategorizer } from "@/domain/page/utils";
 import { deleteSection, updateSectionTitle } from "@/external/API";
-import { useGetSectionByIdSelector, useRemoveSectionReducer, useUpdateSectionTitleReducer } from "@/store/sections/sectionsSlice";
-import { useEffect, useRef, useState } from "react";
+import {
+  useAddPageToSectionReducer,
+  useGetSectionByIdSelector,
+  useRemoveSectionReducer,
+  useUpdateSectionTitleReducer,
+} from "@/store/sections/sectionsSlice";
+import { useState } from "react";
 import SidebarButton from "../SideBarButton/SidebarButton";
 import SidebarNav from "../SidebarNav/SidebarNav";
 import styles from "./css/default.module.css";
 import { ISectionProps } from "./domain/Props";
 
 export default function SidebarSection({ title, pages, id: sectionId }: Readonly<ISectionProps>): JSX.Element {
-  const [showEditInput, setShowEditInput] = useState(false);
-  const editInputRef = useRef<HTMLInputElement>(null);
+  const [showEditSectionTitleInput, setShowEditSectionTitleInput] = useState(false);
+  const [showAddPageInput, setShowAddPageInput] = useState(false);
 
   const propagateNewTitle = useUpdateSectionTitleReducer();
   const propagateRemoveSection = useRemoveSectionReducer();
+  const propagateAddPageToSection = useAddPageToSectionReducer();
 
   const getSectionById = useGetSectionByIdSelector();
 
-  function onBlurEditInput() {
-    setShowEditInput(false);
-  }
-
-  function saveNewTitle() {
-    if (editInputRef.current) {
-      const newTitle = editInputRef.current.value;
-      updateSectionTitle(newTitle, sectionId)
-        .then((response) => {
-          //TODO: handle response
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      propagateNewTitle(newTitle, sectionId);
-      setShowEditInput(false);
-    }
+  function saveNewTitle(title: string) {
+    updateSectionTitle(title, sectionId)
+      .then((response) => {
+        //TODO: handle response
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    propagateNewTitle(title, sectionId);
+    setShowEditSectionTitleInput(false);
   }
 
   function removeSection() {
@@ -61,39 +62,25 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
     propagateRemoveSection(sectionId);
   }
 
-  function hideInputWithSpecialKeys(event: React.KeyboardEvent<HTMLInputElement>): void {
-    const specialKeys = ["Enter", "Escape"];
-
-    if (specialKeys.includes(event.key) && editInputRef.current) {
-      const newTitle = editInputRef.current.value;
-      if (event.key === "Enter" && newTitle.trim() !== "") {
-        saveNewTitle();
-      }
-      setShowEditInput(false);
-    }
+  function addPageToSection(title: string) {
+    propagateAddPageToSection(title, sectionId);
   }
 
-  useEffect(() => {
-    if (editInputRef.current) {
-      editInputRef.current.focus();
-      editInputRef.current.select();
-      editInputRef.current.value = title;
-    }
-  }, [showEditInput]);
   return (
     <details className={styles.container} open>
       <summary className={styles.title}>
-        {showEditInput ? (
-          <>
-            <input type="text" className={styles.input} ref={editInputRef} onBlur={onBlurEditInput} onKeyUp={hideInputWithSpecialKeys} />
-            <button title="Guardar" className={styles.icon} onClick={saveNewTitle}>
-              G
-            </button>
-          </>
+        {showEditSectionTitleInput ? (
+          <MiniInput
+            placeholder="Guardar"
+            initialValue={title}
+            onClose={() => setShowEditSectionTitleInput(false)}
+            showSaveButton
+            onSave={saveNewTitle}
+          />
         ) : (
           <>
             <p className={styles.titleText}>{title}</p>
-            <button title="Editar" className={styles.icon} onClick={() => setShowEditInput(true)}>
+            <button title="Editar" className={styles.icon} onClick={() => setShowEditSectionTitleInput(true)}>
               E
             </button>
           </>
@@ -105,9 +92,13 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
 
       <ul>
         <li>
-          <SidebarButton text="Nueva pagina" isSubButton />
+          {showAddPageInput ? (
+            <MiniInput placeholder="Nueva pagina" onClose={() => setShowAddPageInput(false)} onSave={addPageToSection} isSubButton />
+          ) : (
+            <SidebarButton text="Agregar página" onClick={() => setShowAddPageInput(true)} />
+          )}
         </li>
-        {pages?.map(({ title, id }: IPage) => (
+        {duplicateNamePagesCategorizer(pages, true).map(({ title, id }: IPage) => (
           <SidebarNav text={title} href={`/section/${sectionId}/page/${id}`} key={`${id}page-${crypto.randomUUID}`} />
         ))}
       </ul>

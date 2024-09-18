@@ -76,18 +76,6 @@
   -o-border-radius: 20%;
 }
 
-.input {
-  background-color: #ffffff00;
-  color: var(--primary-font-color);
-  border: none;
-  font-weight: 100;
-  padding: 5px 5px;
-}
-
-.input:focus {
-  outline: none;
-}
-
 .titleText {
   padding: 3px 0;
 }

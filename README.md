@@ -114,8 +114,9 @@ Con **Cirosky**, puedes:
 
 ## 4. Crear Páginas Dentro de Cada Sección
 
-- [ ] Implementar funcionalidad para agregar páginas dentro de una sección específica.
-- [ ] Implementar lógica en botón dentro de cada sección para agregar nuevas páginas.
+- [x] Implementar funcionalidad para agregar páginas dentro de una sección específica.
+- [x] Implementar lógica en botón dentro de cada sección para agregar nuevas páginas.
+- [x] Mostrar indice numérico o de letra para paginas con el mismo nombre
 
 **Tiempo estimado**: 3-4 horas.
 
@@ -166,13 +167,15 @@ Con **Cirosky**, puedes:
 - Plantillas de pagina (doc,cv,horario, etc)
 - Reparar Eslint para que solo trabaje con typescript y no con javascript
 - Poner un botón, section o page en loading mode, ya sea para delete o update según si determino si es necesario o no
+- Limpiar store redux
+- Añadir comandos del teclado para funcionalidades especificas, como crear paginas eliminar paginas etc
 
 ### Progreso General:
 
 - [x] Tarea 1 completada
 - [x] Tarea 2 completada
 - [x] Tarea 3 completada
-- [ ] Tarea 4 completada
+- [x] Tarea 4 completada
 - [ ] Tarea 5 completada
 - [ ] Tarea 6 completada
 - [ ] Tarea 7 completada

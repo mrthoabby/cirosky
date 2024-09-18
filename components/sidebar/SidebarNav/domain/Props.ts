@@ -1,5 +1,6 @@
 export interface ISidebarNavProps {
   text: string;
-  icon?: JSX.Element;
   href: string;
+  icon?: JSX.Element;
+  onClick: () => void;
 }

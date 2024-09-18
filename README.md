@@ -122,9 +122,9 @@ Con **Cirosky**, puedes:
 
 ## 5. Eliminar Páginas Individuales
 
-- [ ] Implementar funcionalidad para eliminar páginas individuales dentro de una sección.
-- [ ] Añadir botón de eliminación a cada página.
-- [ ] Asegurar que la eliminación de una página no afecte a otras páginas o secciones.
+- [x] Implementar funcionalidad para eliminar páginas individuales dentro de una sección.
+- [x] Añadir botón de eliminación a cada página.
+- [x] Asegurar que la eliminación de una página no afecte a otras páginas o secciones.
 
 **Tiempo estimado**: 3-4 horas.
 
@@ -169,6 +169,7 @@ Con **Cirosky**, puedes:
 - Poner un botón, section o page en loading mode, ya sea para delete o update según si determino si es necesario o no
 - Limpiar store redux
 - Añadir comandos del teclado para funcionalidades especificas, como crear paginas eliminar paginas etc
+- Añadir transiciones para una experiencia de usuario que transmita mas suavidad
 
 ### Progreso General:
 
@@ -176,7 +177,7 @@ Con **Cirosky**, puedes:
 - [x] Tarea 2 completada
 - [x] Tarea 3 completada
 - [x] Tarea 4 completada
-- [ ] Tarea 5 completada
+- [x] Tarea 5 completada
 - [ ] Tarea 6 completada
 - [ ] Tarea 7 completada
 - [ ] Tarea 8 completada

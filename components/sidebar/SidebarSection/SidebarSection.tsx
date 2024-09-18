@@ -104,7 +104,7 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
             <SidebarButton text="Agregar página" onClick={() => setShowAddPageInput(true)} />
           )}
         </li>
-        {duplicateNamePagesCategorizer(pages, true).map(({ title, id }: IPage) => (
+        {duplicateNamePagesCategorizer(pages).map(({ title, id }: IPage) => (
           <SidebarPageNav
             text={title}
             href={`/section/${sectionId}/page/${id}`}

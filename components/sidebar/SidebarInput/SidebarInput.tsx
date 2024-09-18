@@ -1,54 +1,33 @@
 "use client";
 
 import MiniCloseButton from "@/components/shared/MiniCloseButton/MiniCloseButton";
-import { SectionFactory } from "@/domain/section/SectionFactory";
-import { createSection } from "@/external/API";
-import {
-  useCreateSectionReducer,
-  useGetShowCreateSectionButtonSwitchInputSelector,
-  useSetShowCreateSectionButtonSwitchInputReducer,
-} from "@/store/sections/sectionsSlice";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./css/default.module.css";
-import { ISidebarAddSectionInputProps } from "./domain/Props";
+import { ISidebarInputProps } from "./domain/Props";
 
-export default function SidebarInput({ placeholder }: Readonly<ISidebarAddSectionInputProps>): JSX.Element {
-  const [sectionName, setSectionName] = useState("");
-
+export default function SidebarInput({ placeholder, onSave, onClose }: Readonly<ISidebarInputProps>): JSX.Element {
   const inputTextRef = useRef<HTMLInputElement | null>(null);
 
-  const showAddSectionButton = useGetShowCreateSectionButtonSwitchInputSelector();
-
-  const propagateSection = useCreateSectionReducer();
-  const setAddSectionButtonViability = useSetShowCreateSectionButtonSwitchInputReducer();
-
-  function hideInputOnBlur(): void {
-    if (sectionName.trim() === "") {
-      setAddSectionButtonViability(true);
+  function hideInputOnBlur(event: React.FocusEvent<HTMLInputElement>): void {
+    const currentValue = event.currentTarget.value;
+    if (currentValue.trim() === "") {
+      onClose();
     }
   }
 
   function hideInputWithSpecialKeys(event: React.KeyboardEvent<HTMLInputElement>): void {
     const specialKeys = ["Enter", "Escape"];
-
-    if (specialKeys.includes(event.key) && sectionName.trim() !== "") {
-      if (event.key === "Enter") {
-        propagateSection(sectionName);
-        createSection(SectionFactory.createSection(sectionName))
-          .then((response) => {
-            //TODO: handle response
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+    const currentValue = event.currentTarget.value;
+    if (specialKeys.includes(event.key)) {
+      if (event.key === "Enter" && currentValue.trim() !== "") {
+        onSave(currentValue);
       }
-      setAddSectionButtonViability(true);
+      onClose();
     }
   }
 
   useEffect(() => {
-    if (inputTextRef.current && !showAddSectionButton) {
+    if (inputTextRef.current) {
       inputTextRef.current?.focus();
     }
   }, []);
@@ -62,9 +41,8 @@ export default function SidebarInput({ placeholder }: Readonly<ISidebarAddSectio
         onKeyUp={hideInputWithSpecialKeys}
         onBlur={hideInputOnBlur}
         ref={inputTextRef}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSectionName(event.target.value)}
       />
-      <MiniCloseButton onClick={() => setAddSectionButtonViability(true)} right="16px" top="4px" />
+      <MiniCloseButton onClick={onClose} right="16px" top="4px" />
     </aside>
   );
 }

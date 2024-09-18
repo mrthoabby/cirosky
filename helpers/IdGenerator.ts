@@ -15,7 +15,7 @@ export class IdGenerator {
     return `${dateString}-${IdGenerator.generateSessionId()}-${uuid}`;
   }
 
-  static generateRandomId(key: string): string {
+  static generateFirmedId(key: string): string {
     const randomNumber = Math.floor(Math.random() * IdGenerator.MAX_RANDOM_NUMBER) + 1;
 
     const uuid: string = UUID();
@@ -29,6 +29,6 @@ export class IdGenerator {
   }
 
   static generateSessionId(): string {
-    return IdGenerator.generateRandomId("session");
+    return IdGenerator.generateFirmedId("session");
   }
 }

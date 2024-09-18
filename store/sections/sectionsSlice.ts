@@ -1,5 +1,6 @@
 "use client";
 import { ISection } from "@/domain/interfaces/ISection";
+import { PageFactory } from "@/domain/page/PageFactory";
 import { SectionFactory } from "@/domain/section/SectionFactory";
 import { IdGenerator } from "@/helpers/IdGenerator";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -82,13 +83,20 @@ const sectionsSlice = createSlice({
       }
     },
     removeSection: (state, action: PayloadAction<string>) => {
-      state.events.deleteEventIdentifier = IdGenerator.generateRandomId(EnumSectionAction.DELETED);
+      state.events.deleteEventIdentifier = IdGenerator.generateFirmedId(EnumSectionAction.DELETED);
       state.onActionWas = EnumSectionAction.DELETED;
       const id = action.payload;
       state.sections = state.sections.filter((section) => section.id !== id);
     },
     synchronizeDeleteSectionEvent: (state) => {
       state.events.previousDeleteEventIdentifier = state.events.deleteEventIdentifier;
+    },
+    createPageInSection: (state, action: PayloadAction<{ pageTitle: string; sectionId: string }>) => {
+      const { pageTitle, sectionId } = action.payload;
+      const sectionIndex = state.sections.findIndex((section) => section.id === sectionId);
+      if (sectionIndex !== -1) {
+        state.sections[sectionIndex].pages.unshift(PageFactory.createPage(pageTitle));
+      }
     },
   },
 });
@@ -219,6 +227,14 @@ export function useSynchronizeDeleteSectionEventReducer(): () => void {
 
   return (): void => {
     dispatch(sectionsSlice.actions.synchronizeDeleteSectionEvent());
+  };
+}
+
+export function useAddPageToSectionReducer(): (pageTitle: string, sectionId: string) => void {
+  const dispatch = useDispatch();
+
+  return (pageTitle: string, sectionId: string): void => {
+    dispatch(sectionsSlice.actions.createPageInSection({ pageTitle, sectionId }));
   };
 }
 

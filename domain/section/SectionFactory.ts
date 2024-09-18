@@ -4,8 +4,9 @@ import { ISection } from "../interfaces/ISection";
 export class SectionFactory {
   static createSection(title: string): ISection {
     return {
-      id: IdGenerator.generateId(),
+      id: IdGenerator.generateFirmedId("section"),
       title,
+      pages: [],
     };
   }
 }

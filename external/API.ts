@@ -21,3 +21,9 @@ export async function updateSectionTitle(title: string, id: string): Promise<boo
 
   return true;
 }
+
+export async function deleteSection(id: string): Promise<boolean> {
+  //TODO: Implement real API call for real case, now is an example with a fake API while the backend is not ready
+  console.info("Deleting section:", id);
+  return true;
+}

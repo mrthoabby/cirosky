@@ -54,6 +54,10 @@
   user-select: none;
 }
 
+.hooverHidden {
+  visibility: hidden;
+}
+
 .title:hover .icon {
   display: inline-block;
 }
@@ -86,4 +90,8 @@
 
 .titleText {
   padding: 3px 0;
+}
+
+.container:hover .hooverHidden {
+  visibility: visible;
 }

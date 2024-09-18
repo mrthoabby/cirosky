@@ -37,3 +37,11 @@
   left: calc(var(--first-level-menu-indentation) + 20px);
   width: 70%;
 }
+
+.nav:hover .hooverHidden {
+  visibility: visible;
+}
+
+.hooverHidden {
+  visibility: hidden;
+}

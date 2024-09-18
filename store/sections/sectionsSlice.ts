@@ -98,6 +98,13 @@ const sectionsSlice = createSlice({
         state.sections[sectionIndex].pages.unshift(PageFactory.createPage(pageTitle));
       }
     },
+    removePageFromSection: (state, action: PayloadAction<{ pageId: string; sectionId: string }>) => {
+      const { pageId, sectionId } = action.payload;
+      const sectionIndex = state.sections.findIndex((section) => section.id === sectionId);
+      if (sectionIndex !== -1) {
+        state.sections[sectionIndex].pages = state.sections[sectionIndex].pages.filter((page) => page.id !== pageId);
+      }
+    },
   },
 });
 
@@ -235,6 +242,14 @@ export function useAddPageToSectionReducer(): (pageTitle: string, sectionId: str
 
   return (pageTitle: string, sectionId: string): void => {
     dispatch(sectionsSlice.actions.createPageInSection({ pageTitle, sectionId }));
+  };
+}
+
+export function useRemovePageFromSectionReducer(): (pageId: string, sectionId: string) => void {
+  const dispatch = useDispatch();
+
+  return (pageId: string, sectionId: string): void => {
+    dispatch(sectionsSlice.actions.removePageFromSection({ pageId, sectionId }));
   };
 }
 

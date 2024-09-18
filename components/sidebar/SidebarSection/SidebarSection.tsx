@@ -6,12 +6,13 @@ import { deleteSection, updateSectionTitle } from "@/external/API";
 import {
   useAddPageToSectionReducer,
   useGetSectionByIdSelector,
+  useRemovePageFromSectionReducer,
   useRemoveSectionReducer,
   useUpdateSectionTitleReducer,
 } from "@/store/sections/sectionsSlice";
 import { useState } from "react";
 import SidebarButton from "../SideBarButton/SidebarButton";
-import SidebarNav from "../SidebarNav/SidebarNav";
+import SidebarPageNav from "../SidebarNav/SidebarPageNav";
 import styles from "./css/default.module.css";
 import { ISectionProps } from "./domain/Props";
 
@@ -22,6 +23,7 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
   const propagateNewTitle = useUpdateSectionTitleReducer();
   const propagateRemoveSection = useRemoveSectionReducer();
   const propagateAddPageToSection = useAddPageToSectionReducer();
+  const propagateRemovePageFromSection = useRemovePageFromSectionReducer();
 
   const getSectionById = useGetSectionByIdSelector();
 
@@ -66,6 +68,10 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
     propagateAddPageToSection(title, sectionId);
   }
 
+  function removePageFromSection(pageId: string) {
+    propagateRemovePageFromSection(pageId, sectionId);
+  }
+
   return (
     <details className={styles.container} open>
       <summary className={styles.title}>
@@ -86,7 +92,7 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
           </>
         )}
         <span className={styles.hooverHidden}>
-          <MiniCloseButton right="8px" onClick={removeSection} />
+          <MiniCloseButton title="Eliminar sección" right="8px" onClick={removeSection} />
         </span>
       </summary>
 
@@ -99,7 +105,14 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
           )}
         </li>
         {duplicateNamePagesCategorizer(pages, true).map(({ title, id }: IPage) => (
-          <SidebarNav text={title} href={`/section/${sectionId}/page/${id}`} key={`${id}page-${crypto.randomUUID}`} />
+          <SidebarPageNav
+            text={title}
+            href={`/section/${sectionId}/page/${id}`}
+            key={`${id}page-${crypto.randomUUID}`}
+            onClick={() => {
+              removePageFromSection(id);
+            }}
+          />
         ))}
       </ul>
     </details>

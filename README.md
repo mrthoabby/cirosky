@@ -170,6 +170,9 @@ Con **Cirosky**, puedes:
 - Limpiar store redux
 - Añadir comandos del teclado para funcionalidades especificas, como crear paginas eliminar paginas etc
 - Añadir transiciones para una experiencia de usuario que transmita mas suavidad
+- Code refactor: añadir custom hooks para funciones que están muy cargadas de metodos y código y boilerplate
+- Code refactor: recordar que puedo usar useeffects mas de una ves en un componente aplicarlo solo cuando sea necesario
+- Code refactor: utilizar usecallbacks y use memo cuando sea necesario, para mejorar el performance
 
 ### Progreso General:
 

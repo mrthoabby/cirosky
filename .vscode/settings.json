@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Rediseño", "reduxjs", "webp"],
+  "cSpell.words": ["Rediseño", "reduxjs", "tailwindcss", "udecode", "webp"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -35,5 +35,6 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.autoClosingTags": true,
   "typescript.format.insertSpaceAfterConstructor": true,
-  "typescript.suggest.autoImports": true
+  "typescript.suggest.autoImports": true,
+  "dependi.npm.lockFileEnabled": true
 }

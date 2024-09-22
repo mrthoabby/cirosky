@@ -27,6 +27,7 @@ import javascript from "highlight.js/lib/languages/javascript";
 import { createLowlight } from "lowlight";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import PreviewButton from "../components/PreviewButton/PreviewButton";
 import SelectorMenu from "../components/SelectorMenu/SelectorMenu";
 import styles from "./css/default.module.css";
 
@@ -66,9 +67,6 @@ export default function PageEditor(): JSX.Element {
     immediatelyRender: false,
     autofocus: true,
     injectCSS: false,
-    onUpdate: ({ editor }) => {
-      console.log(editor.getHTML());
-    },
     editorProps: {
       attributes: {
         class: styles.editor,
@@ -100,7 +98,7 @@ export default function PageEditor(): JSX.Element {
     }
     const handleKeyDown = (event: KeyboardEvent) => {
       if (typeof window !== "undefined") {
-        if (event.metaKey && event.key === "s" && sectionIndexDb) {
+        if (event.metaKey && event.key === "s" && sectionIndexDb && editor?.isEditable) {
           event.preventDefault();
           sectionIndexDb
             .savePage(PageFactory.createContentPage(pageId, editor?.getHTML() || ""))
@@ -131,6 +129,7 @@ export default function PageEditor(): JSX.Element {
   }
   return (
     <>
+      <PreviewButton editor={editor} />
       <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
         -{" "}
         {(() => {

@@ -1,0 +1,41 @@
+.keypad {
+  display: inline-flex;
+  column-gap: 5px;
+  position: fixed;
+  margin-left: 5px;
+  padding: 5px 10px;
+  z-index: 900;
+  background-color: var(--quaternary-background-color);
+  opacity: 0;
+  transition: opacity 0.5s linear 2s;
+  -webkit-transition: opacity 0.5s linear 2s;
+  -moz-transition: opacity 0.5s linear 2s;
+  -ms-transition: opacity 0.5s linear 2s;
+  -o-transition: opacity 0.5s linear 2s;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--primary-font-color);
+}
+
+.button {
+  background-color: var(--quinary-background-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.keypad:hover {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+  -webkit-transition: opacity 0.5s ease-in;
+  -moz-transition: opacity 0.5s ease-in;
+  -ms-transition: opacity 0.5s ease-in;
+  -o-transition: opacity 0.5s ease-in;
+}

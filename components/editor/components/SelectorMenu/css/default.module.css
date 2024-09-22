@@ -1,0 +1,27 @@
+.container {
+  padding-top: 2px;
+  position: relative;
+  display: flex;
+  column-gap: 2px;
+  flex-direction: row;
+  justify-content: space-around;
+  border: none;
+  align-items: center;
+  background-color: var(--secondary-background-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.line {
+  position: relative;
+  display: block;
+  background-color: var(--quaternary-background-color);
+  width: 1.1px;
+  height: 20px;
+  margin: 2px 3px;
+  color: var(--secondary-font-color);
+  border-radius: 8%;
+  -webkit-border-radius: 8%;
+  -moz-border-radius: 8%;
+  -ms-border-radius: 8%;
+  -o-border-radius: 8%;
+}

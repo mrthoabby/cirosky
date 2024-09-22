@@ -1,6 +1,6 @@
+import "@/css/globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400"],
@@ -20,9 +20,6 @@ export const metadata: Metadata = {
   robots: "index, follow",
   keywords: Object.values(keywords).join(","),
   authors: [{ name: "dab", url: "https://github.com/mrthoabby" }],
-  icons: {
-    icon: "./public/cirosky.svg",
-  },
 };
 
 export default function RootLayout({

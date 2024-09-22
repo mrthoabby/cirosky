@@ -197,6 +197,7 @@ Con **Cirosky**, puedes:
 - Definir limite de caracteres por pagina
 - Añadir efecto de guardando cuando se le dá alt s
 - Añadir funcionalidad de añadir un bloque como en notion que me permite tener a un lado un conjunto de cosas en un cuadro
+- Integrar con crack (you know who is) para poder buscar contenido por pagina
 
 ### Progreso General:
 

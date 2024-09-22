@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--secondary-background-color);
+}
+
+.button {
+  width: 100%;
+  position: relative;
+  display: block;
+  background-color: transparent;
+  color: rgba(38, 30, 30, 0.765);
+  padding: 8px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--primary-background-color);
+  color: var(--tertiary-font-color);
+  fill: var(--tertiary-font-color);
+}

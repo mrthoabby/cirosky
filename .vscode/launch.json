@@ -34,9 +34,22 @@
       "type": "chrome",
       "request": "launch",
       "name": "Open Next.js App in Chrome",
-      "url": "http://localhost:3001/home",
+      "url": "http://localhost:3000/home",
       "webRoot": "${workspaceFolder}",
       "runtimeArgs": ["--incognito"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Next.js Debug",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "env": {
+        "NODE_OPTIONS": "--inspect-brk=9229"
+      },
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal"
     }
   ]
 }

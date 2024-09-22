@@ -1,10 +1,15 @@
 :root {
   --primary-font-color: #ffffff;
+  --secondary-font-color: #242424;
+  --tertiary-font-color: #e8e7e7;
   --first-level-menu-indentation: 40px;
   --second-level-menu-indentation: calc(var(--first-level-menu-indentation) + 20px);
   --third-level-menu-indentation: calc(var(--second-level-menu-indentation) * 3.5);
 
-  --primary-background-color: #242424;
+  --primary-background-color: var(--secondary-font-color);
+  --secondary-background-color: var(--primary-font-color);
+  --tertiary-background-color: #fff8f8;
+  --quaternary-background-color: #2121216a;
 
   --principal-title-font-size: 35px;
   --principal-title-font-weight: 300;

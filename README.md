@@ -130,26 +130,41 @@ Con **Cirosky**, puedes:
 
 ## 6. Crear Editor de Texto para el Contenido de la Página
 
-- [ ] 7.1 Elegir un editor de texto enriquecido (como Quill, Slate, o Draft.js).
-- [ ] 7.2 Integrar el editor de texto enriquecido en la UI.
-- [ ] 7.3 Añadir opciones de formato básico (negrita, cursiva, listas, etc.).
-- [ ] 7.4 Implementar funcionalidad para guardar el contenido del editor.
+- [x] 7.1 Elegir un editor de texto enriquecido (como Quill, Slate, o Draft.js).
+- [x] 7.2 Integrar el editor de texto enriquecido en la UI.
+- [x] 7.3 Añadir opciones de formato básico (negrita, cursiva, listas, title, bloque de cita, bloque de código)
+- [x] 7.4 Implementar funcionalidad para guardar el contenido del editor.
 
 **Tiempo estimado**: 8-10 horas.
 
 ## 7. Editar Contenido de Página
 
-- [ ] 6.1 Implementar redirection al editor al crear o seleccionar una página.
+- [ ] 6.1 Implementar redirection al editor al crear o seleccionar una página. y mostrar la pagina seleccionada
 - [ ] 6.2 Desarrollar editor para modificar el contenido de la página.
 - [ ] 6.3 Implementar funcionalidad para guardar cambios realizados en la página.
+- [ ] 6.4 Habilitar modo vista y modo editor
 
 **Tiempo estimado**: 6-8 horas.
 
-## 8. Exportar Página a Formato PDF
+## 8. Funcionalidad general del editor
 
-- [ ] 8.1 Implementar una librería para generar PDFs desde el contenido de la página (por ejemplo, jsPDF).
-- [ ] 8.2 Añadir botón o funcionalidad para exportar la página a PDF.
-- [ ] 8.3 Personalizar el formato del PDF (tamaño de página, estilo, etc.).
+- [ ] 8.1 Formato de texto (negrita, cursiva, subrayado, tachado) - 4 horas
+- [ ] 8.2 Niveles de encabezado (H1, H2, H3) - 2 horas
+- [ ] 8.3 Listas (viñetas, numeradas, checkboxes) - 4 horas
+- [ ] 8.4 Tablas básicas (crear, editar, eliminar filas/columnas) - 6 horas
+- [ ] 8.5 Bloques de código con resaltado de sintaxis - 6 horas
+- [ ] 8.6 Incrustar enlaces - 2 horas
+- [ ] 8.7 Incrustar imágenes - 4 horas
+- [ ] 8.8 Adjuntar archivos - 4 horas
+- [ ] 8.9 Funcionalidad de deshacer/rehacer - 4 horas
+- [ ] 8.10 Colaboración en tiempo real y comentarios - 10 horas
+- [ ] 8.11 Bloques de cita (quotes) - 2 horas
+- [ ] 8.12 Bloque divisor (línea horizontal) - 1 hora
+- [ ] 8.13 Movimiento de bloques de texto de forma draggable - 4 horas
+- [ ] 8.14 Exportar en formato PDF - 4 horas
+- [ ] 8.15 Cambiar tipo y formato de fuente - 4 horas
+- [ ] 8.16 Alternar entre tema oscuro y claro - 4 horas
+- [ ] 8.17 Permite tener paginas publicas y paginas privada
 
 **Tiempo estimado**: 4-6 horas.
 
@@ -170,6 +185,16 @@ Con **Cirosky**, puedes:
 - Limpiar store redux
 - Añadir comandos del teclado para funcionalidades especificas, como crear paginas eliminar paginas etc
 - Añadir transiciones para una experiencia de usuario que transmita mas suavidad
+- Code refactor: añadir custom hooks para funciones que están muy cargadas de metodos y código y boilerplate
+- Code refactor: recordar que puedo usar useeffects mas de una ves en un componente aplicarlo solo cuando sea necesario
+- Code refactor: utilizar usecallbacks y use memo cuando sea necesario, para mejorar el performance
+- Integración con bases de datos mostrar datos en tablas desde bases de datos
+- Añadir funcionalizad para darle bordes redondos a algunos componentes del editor como por ejemplo el blockquote que sea parametrizable
+- Refactorizar componentes que tiene mucho código y que son muy grandes lo que tienen comentario TODO
+- Añadir el buscador de paginas y secciones
+- Extender buscador al contenido de pagina
+- Añadir contador de letras en pagina
+- Definir limite de caracteres por pagina
 
 ### Progreso General:
 
@@ -178,7 +203,7 @@ Con **Cirosky**, puedes:
 - [x] Tarea 3 completada
 - [x] Tarea 4 completada
 - [x] Tarea 5 completada
-- [ ] Tarea 6 completada
+- [x] Tarea 6 completada
 - [ ] Tarea 7 completada
 - [ ] Tarea 8 completada
 - [ ] Tarea 9 completada

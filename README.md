@@ -140,7 +140,7 @@ Con **Cirosky**, puedes:
 ## 7. Editar Contenido de Página
 
 - [x] 6.1 Implementar redirection al editor al crear o seleccionar una página. y mostrar la pagina seleccionada
-- [ ] 6.2 Desarrollar editor para modificar el contenido de la página.
+- [ ] 6.2 Desarrollar un editor presentable para modificar el contenido de la página.
 - [ ] 6.3 Implementar funcionalidad para guardar cambios realizados en la página.
 - [ ] 6.4 Habilitar modo vista y modo editor
 
@@ -165,6 +165,7 @@ Con **Cirosky**, puedes:
 - [ ] 8.15 Cambiar tipo y formato de fuente - 4 horas
 - [ ] 8.16 Alternar entre tema oscuro y claro - 4 horas
 - [ ] 8.17 Permite tener paginas publicas y paginas privada
+- [ ] 8.18 Hacer que el header se oculte o sea ocultable cuando esté trabajando en el editor
 
 **Tiempo estimado**: 4-6 horas.
 

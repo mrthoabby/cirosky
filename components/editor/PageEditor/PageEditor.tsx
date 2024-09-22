@@ -128,7 +128,7 @@ export default function PageEditor(): JSX.Element {
     return <p>[DEPELOPING... EDITOR NO CARGÓ]</p>;
   }
   return (
-    <>
+    <main>
       <PreviewButton editor={editor} />
       <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
         -{" "}
@@ -139,6 +139,6 @@ export default function PageEditor(): JSX.Element {
       </FloatingMenu>
       <SelectorMenu editor={editor} />
       <EditorContent editor={editor} />
-    </>
+    </main>
   );
 }

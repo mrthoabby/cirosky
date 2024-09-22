@@ -3,9 +3,9 @@ import Link from "next/link";
 import styles from "./css/default.module.css";
 import { ISidebarNavProps } from "./domain/Props";
 
-export default function SidebarPageNav({ text, icon = <>• </>, href, onClick }: Readonly<ISidebarNavProps>): JSX.Element {
+export default function SidebarPageNav({ text, icon = <>• </>, href, isActive, onClick }: Readonly<ISidebarNavProps>): JSX.Element {
   return (
-    <li className={styles.nav}>
+    <li className={`${styles.nav} ${isActive && styles.isActive}`}>
       <Link href={href} className={styles.title}>
         {icon} {text}
       </Link>

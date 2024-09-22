@@ -139,7 +139,7 @@ Con **Cirosky**, puedes:
 
 ## 7. Editar Contenido de Página
 
-- [ ] 6.1 Implementar redirection al editor al crear o seleccionar una página. y mostrar la pagina seleccionada
+- [x] 6.1 Implementar redirection al editor al crear o seleccionar una página. y mostrar la pagina seleccionada
 - [ ] 6.2 Desarrollar editor para modificar el contenido de la página.
 - [ ] 6.3 Implementar funcionalidad para guardar cambios realizados en la página.
 - [ ] 6.4 Habilitar modo vista y modo editor

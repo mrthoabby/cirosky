@@ -45,3 +45,7 @@
 .hooverHidden {
   visibility: hidden;
 }
+
+.isActive {
+  background-color: var(--quinary-background-color);
+}

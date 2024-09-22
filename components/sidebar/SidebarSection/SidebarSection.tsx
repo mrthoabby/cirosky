@@ -1,3 +1,4 @@
+"use client";
 import MiniCloseButton from "@/components/shared/MiniCloseButton/MiniCloseButton";
 import { MiniInput } from "@/components/shared/MiniInput/MiniInput";
 import { IPage } from "@/domain/interfaces/IPage";
@@ -10,15 +11,17 @@ import {
   useRemoveSectionReducer,
   useUpdateSectionTitleReducer,
 } from "@/store/sections/sectionsSlice";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import SidebarButton from "../SideBarButton/SidebarButton";
-import SidebarPageNav from "../SidebarNav/SidebarPageNav";
+import SidebarPageNav from "../SidebarPageNav/SidebarPageNav";
 import styles from "./css/default.module.css";
 import { ISectionProps } from "./domain/Props";
 
 export default function SidebarSection({ title, pages, id: sectionId }: Readonly<ISectionProps>): JSX.Element {
   const [showEditSectionTitleInput, setShowEditSectionTitleInput] = useState(false);
   const [showAddPageInput, setShowAddPageInput] = useState(false);
+  const pathName = usePathname();
 
   const propagateNewTitle = useUpdateSectionTitleReducer();
   const propagateRemoveSection = useRemoveSectionReducer();
@@ -107,6 +110,7 @@ export default function SidebarSection({ title, pages, id: sectionId }: Readonly
         {duplicateNamePagesCategorizer(pages).map(({ title, id }: IPage) => (
           <SidebarPageNav
             text={title}
+            isActive={pathName === `/section/${sectionId}/page/${id}`}
             href={`/section/${sectionId}/page/${id}`}
             key={`${id}page-${crypto.randomUUID}`}
             onClick={() => {

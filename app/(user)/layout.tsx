@@ -1,6 +1,6 @@
 import SidebarBoard from "@/components/sidebar/SidebarBoard/SidebarBoard";
 import React from "react";
-import styles from "./styles.module.css";
+import styles from "./default.module.css";
 
 export default function HomeLayout({
   children,

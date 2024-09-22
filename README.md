@@ -130,19 +130,18 @@ Con **Cirosky**, puedes:
 
 ## 6. Crear Editor de Texto para el Contenido de la Página
 
-- [x] 7.1 Elegir un editor de texto enriquecido (como Quill, Slate, o Draft.js).
-- [x] 7.2 Integrar el editor de texto enriquecido en la UI.
-- [x] 7.3 Añadir opciones de formato básico (negrita, cursiva, listas, title, bloque de cita, bloque de código)
-- [x] 7.4 Implementar funcionalidad para guardar el contenido del editor.
+- [x] 6.1 Elegir un editor de texto enriquecido (como Quill, Slate, o Draft.js).
+- [x] 6.2 Integrar el editor de texto enriquecido en la UI.
+- [x] 6.3 Añadir opciones de formato básico (negrita, cursiva, listas, title, bloque de cita, bloque de código)
+- [x] 6.4 Implementar funcionalidad para guardar el contenido del editor.
 
 **Tiempo estimado**: 8-10 horas.
 
 ## 7. Editar Contenido de Página
 
-- [ ] 6.1 Implementar redirection al editor al crear o seleccionar una página. y mostrar la pagina seleccionada
-- [ ] 6.2 Desarrollar editor para modificar el contenido de la página.
-- [ ] 6.3 Implementar funcionalidad para guardar cambios realizados en la página.
-- [ ] 6.4 Habilitar modo vista y modo editor
+- [x] 7.1 Implementar redirection al editor al crear o seleccionar una página. y mostrar la pagina seleccionada
+- [x] 7.2 Desarrollar un editor presentable para modificar el contenido de la página.
+- [ ] 7.4 Habilitar modo vista y modo editor
 
 **Tiempo estimado**: 6-8 horas.
 
@@ -165,6 +164,7 @@ Con **Cirosky**, puedes:
 - [ ] 8.15 Cambiar tipo y formato de fuente - 4 horas
 - [ ] 8.16 Alternar entre tema oscuro y claro - 4 horas
 - [ ] 8.17 Permite tener paginas publicas y paginas privada
+- [ ] 8.18 Hacer que el header se oculte o sea ocultable cuando esté trabajando en el editor
 
 **Tiempo estimado**: 4-6 horas.
 
@@ -195,6 +195,9 @@ Con **Cirosky**, puedes:
 - Extender buscador al contenido de pagina
 - Añadir contador de letras en pagina
 - Definir limite de caracteres por pagina
+- Añadir efecto de guardando cuando se le dá alt s
+- Añadir funcionalidad de añadir un bloque como en notion que me permite tener a un lado un conjunto de cosas en un cuadro
+- Integrar con crack (you know who is) para poder buscar contenido por pagina
 
 ### Progreso General:
 

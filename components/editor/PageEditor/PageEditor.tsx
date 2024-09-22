@@ -28,6 +28,7 @@ import { createLowlight } from "lowlight";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import SelectorMenu from "../components/SelectorMenu/SelectorMenu";
+import styles from "./css/default.module.css";
 
 const lowlight = createLowlight({ javascript });
 
@@ -67,6 +68,11 @@ export default function PageEditor(): JSX.Element {
     injectCSS: false,
     onUpdate: ({ editor }) => {
       console.log(editor.getHTML());
+    },
+    editorProps: {
+      attributes: {
+        class: styles.editor,
+      },
     },
   });
 
@@ -124,7 +130,7 @@ export default function PageEditor(): JSX.Element {
     return <p>[DEPELOPING... EDITOR NO CARGÓ]</p>;
   }
   return (
-    <main>
+    <>
       <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
         -{" "}
         {(() => {
@@ -134,6 +140,6 @@ export default function PageEditor(): JSX.Element {
       </FloatingMenu>
       <SelectorMenu editor={editor} />
       <EditorContent editor={editor} />
-    </main>
+    </>
   );
 }

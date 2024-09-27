@@ -178,7 +178,9 @@ Con **Cirosky**, puedes:
 
 ### Extensiones
 
-- Paginas embebidas
+- Paginas embebidas (también son como pequeños fragmentos de paginas que son compartidos en diferentes paginas de cir que se muestran en una
+  pagina pero si se cambian en una pagina cambianen otras paginas tambine sencillo de hacer en realida vinculando el contenido a la pagina
+  yu actualizando o cun contenido único en servidor)
 - Plantillas de pagina (doc,cv,horario, etc)
 - Reparar Eslint para que solo trabaje con typescript y no con javascript
 - Poner un botón, section o page en loading mode, ya sea para delete o update según si determino si es necesario o no
@@ -198,6 +200,7 @@ Con **Cirosky**, puedes:
 - Añadir efecto de guardando cuando se le dá alt s
 - Añadir funcionalidad de añadir un bloque como en notion que me permite tener a un lado un conjunto de cosas en un cuadro
 - Integrar con crack (you know who is) para poder buscar contenido por pagina
+- integrar con diagram-io draw.io
 
 ### Progreso General:
 

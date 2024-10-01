@@ -202,6 +202,11 @@ Con **Cirosky**, puedes:
 - Integrar con crack (you know who is) para poder buscar contenido por pagina
 - integrar con diagram-io draw.io
 
+### Preguntas que pueden generar features
+
+- ¿Cada sección tiene información adicional como fecha de creación, estado, o descripción? ¿Las páginas deben tener campos adicionales como
+  metadatos o autores?
+
 ### Progreso General:
 
 - [x] Tarea 1 completada

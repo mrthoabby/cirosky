@@ -9,7 +9,6 @@ import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import Document from "@tiptap/extension-document";
 import Heading from "@tiptap/extension-heading";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
-import Image from "@tiptap/extension-image";
 import Italic from "@tiptap/extension-italic";
 import Link from "@tiptap/extension-link";
 import ListItem from "@tiptap/extension-list-item";
@@ -31,7 +30,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import PreviewButton from "../components/PreviewButton/PreviewButton";
 import SelectorMenu from "../components/SelectorMenu/SelectorMenu";
-import { ImagePaste } from "../extensions/ImagePaste";
+import { ExtendedImagePaste } from "../extensions/ImagePaste";
 import { ImageResize } from "../extensions/ImageResize";
 
 import styles from "./css/default.module.css";
@@ -53,7 +52,7 @@ export default function PageEditor(): JSX.Element {
       CodeBlockLowlight.configure({ lowlight, defaultLanguage: "javascript", languageClassPrefix: "language-" }),
       HorizontalRule,
       Heading,
-      Image,
+      // Image,
       OrderedList,
       Mention,
       TaskList,
@@ -70,7 +69,17 @@ export default function PageEditor(): JSX.Element {
       Blockquote,
       Underline,
       Link,
-      ImagePaste,
+      ExtendedImagePaste.configure({
+        inline: true,
+        allowBase64: true,
+        HTMLAttributes: {
+          class: "my-custom-image-class",
+        },
+        onError: (error) => {
+          console.error("Error al pegar imagen:", error);
+          // Aquí puedes añadir un manejo de errores personalizado, por ejemplo, mostrar una notificación al usuario
+        },
+      }),
       ImageResize,
     ],
     immediatelyRender: false,
@@ -93,10 +102,9 @@ export default function PageEditor(): JSX.Element {
               //TODO Get content from API
               return;
             }
-            editor
-              ?.chain()
-              .setContent(previousContent?.content || "")
-              .run();
+
+            const decodedData = JSON.parse(atob(previousContent?.content)) || "";
+            editor?.chain().setContent(decodedData).run();
           })
           .catch((error) => {
             console.error("Error loading previous content: ", error);
@@ -109,8 +117,10 @@ export default function PageEditor(): JSX.Element {
       if (typeof window !== "undefined") {
         if (event.metaKey && event.key === "s" && sectionIndexDb && editor?.isEditable) {
           event.preventDefault();
+          const encodedContent = btoa(JSON.stringify(editor?.getJSON())) || "";
+
           sectionIndexDb
-            .savePage(PageFactory.createContentPage(pageId, editor?.getHTML() || ""))
+            .savePage(PageFactory.createContentPage(pageId, encodedContent || ""))
             .then(() => {
               console.log("Page saved successfully");
             })

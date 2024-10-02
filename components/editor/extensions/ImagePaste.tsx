@@ -1,68 +1,131 @@
-import { Extension } from "@tiptap/core";
+import { mergeAttributes, Node } from "@tiptap/core";
 import { Plugin, PluginKey } from "prosemirror-state";
-import { EditorView } from "prosemirror-view";
 
-interface ImagePasteOptions {
+export interface ImageOptions {
+  inline: boolean;
+  allowBase64: boolean;
+  HTMLAttributes: Record<string, any>;
+}
+
+export interface ImagePasteOptions {
   onError: (error: Error) => void;
 }
 
-type FileReaderResult = string | ArrayBuffer | null;
-
-export const ImagePaste = Extension.create<ImagePasteOptions>({
-  name: "imagePaste",
+export const ExtendedImagePaste = Node.create<ImageOptions & ImagePasteOptions>({
+  name: "image",
 
   addOptions() {
     return {
+      inline: false,
+      allowBase64: false,
+      HTMLAttributes: {},
       onError: (error: Error) => console.error(error),
     };
   },
 
+  inline() {
+    return this.options.inline;
+  },
+
+  group() {
+    return this.options.inline ? "inline" : "block";
+  },
+
+  draggable: true,
+
+  addAttributes() {
+    return {
+      src: {
+        default: null,
+      },
+      alt: {
+        default: null,
+      },
+      title: {
+        default: null,
+      },
+    };
+  },
+
+  parseHTML() {
+    return [
+      {
+        tag: "img[src]",
+      },
+    ];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return ["img", mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)];
+  },
+
+  addCommands() {
+    return {
+      setImage:
+        (options) =>
+        ({ commands }) => {
+          return commands.insertContent({
+            type: this.name,
+            attrs: options,
+          });
+        },
+    };
+  },
+
   addProseMirrorPlugins() {
-    const plugin = new Plugin({
+    const imagePastePlugin = new Plugin({
       key: new PluginKey("imagePaste"),
       props: {
-        handlePaste: (view: EditorView, event: ClipboardEvent): boolean => {
-          const items = event.clipboardData?.items;
-          if (!items) return false;
+        handleDOMEvents: {
+          paste: (view, event) => {
+            const items = Array.from(event.clipboardData?.items || []);
+            const imageItems = items.filter((item) => item.type.startsWith("image/"));
 
-          const imageItem = Array.from(items).find((item) => item.type.startsWith("image/"));
-          if (!imageItem) return false;
-
-          event.preventDefault();
-
-          const file = imageItem.getAsFile();
-          if (!file) {
-            this.options.onError(new Error("No se pudo obtener el archivo de imagen"));
-            return true;
-          }
-
-          const reader = new FileReader();
-
-          reader.onload = (readerEvent: ProgressEvent<FileReader>) => {
-            const result = readerEvent.target?.result as FileReaderResult;
-            if (typeof result !== "string") {
-              this.options.onError(new Error("El resultado de FileReader no es una cadena"));
-              return;
+            if (imageItems.length === 0) {
+              return false;
             }
 
-            const { schema } = view.state;
-            const imageNode = schema.nodes.image.create({ src: result });
+            event.preventDefault();
 
-            const transaction = view.state.tr.replaceSelectionWith(imageNode);
-            view.dispatch(transaction);
-          };
+            imageItems.forEach((imageItem) => {
+              const file = imageItem.getAsFile();
+              if (!file) {
+                this.options.onError(new Error("No se pudo obtener el archivo de imagen"));
+                return;
+              }
 
-          reader.onerror = () => {
-            this.options.onError(new Error("Error al leer el archivo de imagen"));
-          };
+              const reader = new FileReader();
+              reader.onload = (readerEvent) => {
+                const result = readerEvent.target?.result;
+                if (typeof result !== "string") {
+                  this.options.onError(new Error("El resultado de FileReader no es una cadena"));
+                  return;
+                }
 
-          reader.readAsDataURL(file);
+                if (!this.options.allowBase64 && result.startsWith("data:")) {
+                  this.options.onError(new Error("Las imágenes base64 no están permitidas"));
+                  return;
+                }
 
-          return true;
+                const { schema } = view.state;
+                const imageNode = schema.nodes.image.create({ src: result });
+                const transaction = view.state.tr.replaceSelectionWith(imageNode);
+                view.dispatch(transaction);
+              };
+
+              reader.onerror = () => {
+                this.options.onError(new Error("Error al leer el archivo de imagen"));
+              };
+
+              reader.readAsDataURL(file);
+            });
+
+            return true;
+          },
         },
       },
     });
 
-    return [plugin];
+    return [imagePastePlugin];
   },
 });

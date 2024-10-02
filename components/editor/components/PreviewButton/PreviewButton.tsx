@@ -25,6 +25,16 @@ export default function PreviewButton({ editor }: IPreviewButtonProps): JSX.Elem
           <EditIcon className={styles.icon} />
         </button>
       )}
+
+      <button
+        title="Guardad"
+        onClick={() => {
+          console.log(editor.getHTML());
+          //Guardar el contenido del editor
+        }}
+      >
+        Save Test
+      </button>
     </section>
   );
 }

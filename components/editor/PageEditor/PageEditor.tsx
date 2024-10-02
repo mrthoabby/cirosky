@@ -11,6 +11,7 @@ import Heading from "@tiptap/extension-heading";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
 import Image from "@tiptap/extension-image";
 import Italic from "@tiptap/extension-italic";
+import Link from "@tiptap/extension-link";
 import ListItem from "@tiptap/extension-list-item";
 import ListKeymap from "@tiptap/extension-list-keymap";
 import Mention from "@tiptap/extension-mention";
@@ -21,6 +22,7 @@ import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import Text from "@tiptap/extension-text";
 import Typography from "@tiptap/extension-typography";
+import Underline from "@tiptap/extension-underline";
 import Youtube from "@tiptap/extension-youtube";
 import { EditorContent, FloatingMenu, useEditor } from "@tiptap/react";
 import javascript from "highlight.js/lib/languages/javascript";
@@ -29,6 +31,9 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import PreviewButton from "../components/PreviewButton/PreviewButton";
 import SelectorMenu from "../components/SelectorMenu/SelectorMenu";
+import { ImagePaste } from "../extensions/ImagePaste";
+import { ImageResize } from "../extensions/ImageResize";
+
 import styles from "./css/default.module.css";
 
 const lowlight = createLowlight({ javascript });
@@ -63,6 +68,10 @@ export default function PageEditor(): JSX.Element {
       Bold,
       Italic,
       Blockquote,
+      Underline,
+      Link,
+      ImagePaste,
+      ImageResize,
     ],
     immediatelyRender: false,
     autofocus: true,

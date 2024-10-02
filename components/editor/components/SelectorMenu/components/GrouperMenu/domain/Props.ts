@@ -1,8 +1,4 @@
 import { Editor } from "@tiptap/core";
-export interface IGrouperMenuProps {
+export interface ITypographyMenuProps {
   editor: Editor;
-}
-
-export enum EnumDefaultGrouper {
-  BulletedList = "bulletedList",
 }

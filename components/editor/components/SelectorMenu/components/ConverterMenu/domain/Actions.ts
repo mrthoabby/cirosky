@@ -1,25 +1,26 @@
 import { Editor } from "@tiptap/react";
-import { isBulletListActive } from "../../GrouperMenu/domain/Actions";
+import { EnumDefaultGrouper } from "./Props";
 
-function blockQuote(editor: Editor) {
-  if (isBulletListActive(editor)) {
-    editor.chain().focus().toggleBulletList().run();
-  }
-  editor.chain().focus().toggleBlockquote().run();
+function bulletLis(editor: Editor) {
+  editor.chain().focus().toggleBulletList().run();
 }
 
-function blockCode(editor: Editor) {
-  editor.chain().focus().toggleCodeBlock().run();
+function link(editor: Editor, url: string) {
+  editor.chain().focus().setLink({ href: url }).run();
 }
 
 interface Actions {
-  toggleBlockQuote: VoidFunction;
-  toggleBlockCode: VoidFunction;
+  toggleBulletLis: VoidFunction;
+  setLink: (url: string) => void;
 }
 
 export function getActions(editor: Editor): Actions {
   return {
-    toggleBlockQuote: () => blockQuote(editor),
-    toggleBlockCode: () => blockCode(editor),
+    toggleBulletLis: () => bulletLis(editor),
+    setLink: (url: string) => link(editor, url),
   };
+}
+
+export function isBulletListActive(editor: Editor) {
+  return editor.isActive(EnumDefaultGrouper.BulletedList);
 }

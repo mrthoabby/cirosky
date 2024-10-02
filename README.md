@@ -141,30 +141,26 @@ Con **Cirosky**, puedes:
 
 - [x] 7.1 Implementar redirection al editor al crear o seleccionar una página. y mostrar la pagina seleccionada
 - [x] 7.2 Desarrollar un editor presentable para modificar el contenido de la página.
-- [ ] 7.4 Habilitar modo vista y modo editor
-
-**Tiempo estimado**: 6-8 horas.
+- [x] 7.4 Habilitar modo vista y modo editor s **Tiempo estimado**: 6-8 horas.
 
 ## 8. Funcionalidad general del editor
 
-- [ ] 8.1 Formato de texto (negrita, cursiva, subrayado, tachado) - 4 horas
-- [ ] 8.2 Niveles de encabezado (H1, H2, H3) - 2 horas
-- [ ] 8.3 Listas (viñetas, numeradas, checkboxes) - 4 horas
-- [ ] 8.4 Tablas básicas (crear, editar, eliminar filas/columnas) - 6 horas
-- [ ] 8.5 Bloques de código con resaltado de sintaxis - 6 horas
-- [ ] 8.6 Incrustar enlaces - 2 horas
-- [ ] 8.7 Incrustar imágenes - 4 horas
-- [ ] 8.8 Adjuntar archivos - 4 horas
-- [ ] 8.9 Funcionalidad de deshacer/rehacer - 4 horas
-- [ ] 8.10 Colaboración en tiempo real y comentarios - 10 horas
-- [ ] 8.11 Bloques de cita (quotes) - 2 horas
-- [ ] 8.12 Bloque divisor (línea horizontal) - 1 hora
+- [x] 8.1 Formato de texto (negrita, cursiva, subrayado, tachado) - 4 horas
+- [x] 8.2 Niveles de encabezado (H1, H2, H3) - 2 horas
+- [x] 8.3 Listas (viñetas, numeradas, checkboxes) - 4 horas
+- [x] 8.5 Bloques de código con resaltado de sintaxis - 6 horas
+- [x] 8.6 Incrustar enlaces - 2 horas
+- [x] 8.7 Incrustar imágenes - 4 horas
+- [x] 8.11 Bloques de cita (quotes) - 2 horas
+- [x] 8.12 Bloque divisor (línea horizontal) - 1 hora
 - [ ] 8.13 Movimiento de bloques de texto de forma draggable - 4 horas
 - [ ] 8.14 Exportar en formato PDF - 4 horas
 - [ ] 8.15 Cambiar tipo y formato de fuente - 4 horas
 - [ ] 8.16 Alternar entre tema oscuro y claro - 4 horas
 - [ ] 8.17 Permite tener paginas publicas y paginas privada
 - [ ] 8.18 Hacer que el header se oculte o sea ocultable cuando esté trabajando en el editor
+- [ ] 8.11 Añadir botón de guardar
+- [ ] Conectar con Api
 
 **Tiempo estimado**: 4-6 horas.
 
@@ -201,6 +197,13 @@ Con **Cirosky**, puedes:
 - Añadir funcionalidad de añadir un bloque como en notion que me permite tener a un lado un conjunto de cosas en un cuadro
 - Integrar con crack (you know who is) para poder buscar contenido por pagina
 - integrar con diagram-io draw.io
+- Separa la lgica del glabl css editor en diferente pequeños para cada tipo de compoenente
+- Tablas básicas (crear, editar, eliminar filas/columnas) (Solo si lo considero necesario)
+- Monstrar notificación de documento guardado
+- Perfeccionar el resize de imagen
+- Adjuntar archivos
+- Funcionalidad de deshacer/rehacer
+- Colaboración en tiempo real y comentarios
 
 ### Preguntas que pueden generar features
 

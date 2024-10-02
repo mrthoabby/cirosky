@@ -20,3 +20,27 @@
   color: var(--tertiary-font-color);
   fill: var(--tertiary-font-color);
 }
+
+.inputLink {
+  position: absolute;
+  margin-top: 90px;
+  margin-left: 5px;
+  padding: 10px;
+  border: none;
+  color: #317cfdc9;
+  display: none;
+  background-color: var(--secondary-background-color);
+  border-bottom: 2px inset var(--primary-background-color);
+  transition: display 0.5s ease-in-out;
+  -webkit-transition: display 0.5s ease-in-out;
+  -moz-transition: display 0.5s ease-in-out;
+  -ms-transition: display 0.5s ease-in-out;
+  -o-transition: display 0.5s ease-in-out;
+  padding-left: 8px;
+}
+
+.inputLink:focus {
+  opacity: 1;
+  outline: none;
+  border-bottom: 2px inset var(--primary-background-color);
+}

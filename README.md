@@ -218,6 +218,6 @@ Con **Cirosky**, puedes:
 - [x] Tarea 4 completada
 - [x] Tarea 5 completada
 - [x] Tarea 6 completada
-- [ ] Tarea 7 completada
+- [x] Tarea 7 completada
 - [ ] Tarea 8 completada
 - [ ] Tarea 9 completada
